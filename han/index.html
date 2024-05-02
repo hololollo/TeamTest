@@ -57,6 +57,17 @@
     .ft_wrap { clear:both; width: 1200px; height: 200px; margin: 0 auto; } 
 
     </style>
+    <script>
+        window.addEventListener("scroll",function(){
+        var scrollposition = window.scrollY;
+        if(scrollposition > 1){
+            document.getElementById("gnb").style.display = "none";
+            document.getElementById("gnb2").style.display = "block";
+        } else {
+            document.getElementById("gnb").style.display = "block";
+            document.getElementById("gnb2").style.display = "none";
+        }})
+    </script>
 </head>
 <body>
     <header class="hd clr-fix">

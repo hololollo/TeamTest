@@ -8,7 +8,7 @@ body { width:100%; overflow-x:hidden; }
 * { margin: 0; padding: 0; }
 a { text-decoration: none;}
 .wrap { position:relative; }
-ul {list-style: none;}
+ul {list-style: none; margin: 0 auto;}
 
 /* header */
 #hd { width: 100%; height: auto; position:relative; border: 1px solid #333; background-color: rgba(99, 96, 53, 0.014);}
@@ -35,8 +35,8 @@ ul {list-style: none;}
 
 /* main */
 #contents { width: 100%;}
-#vs { clear:both; width: 100%; height: 953px;; overflow:hidden; position:relative; }
-#vs img { display:block; width: 100%;  height: 953px; position:absolute; z-index: 0;}
+#vs { clear:both; width: 100%; height: 600px;; overflow:hidden; position:relative; }
+#vs img { display:block; width: 100%;  height: 600px; position:absolute; z-index: 0;}
 
 .page { clear:both; width: 1280px; min-height:60vh; border: 1px solid #333; margin: 0 auto;}
 .page:after { content:""; display:block; width:100%; clear:both; }
@@ -50,14 +50,14 @@ ul {list-style: none;}
 
 /* footer */
 a{font-family: "Nanum Gothic", sans-serif; font-weight:500 ;}
-p{font-family: "Nanum Gothic", sans-serif; font-size: 13px; }
+p {font-family: "Nanum Gothic", sans-serif; font-size: 13px; }
 
 
 #ft{ width:100%; height: auto; background-color: #1F1E2C; }
-.fc_wrap {position: relative;  width: 1290px; height: 180px;  margin : auto;  }
+.fc_wrap {position: relative;  width: 1290px; height: 180px;  margin :0 auto;  }
 .logo{position: absolute;  top:-20px; width:200px; height: 150px; }
 
-.foot_menu {width:1000px; height:auto;   margin: 0 auto; }
+.foot_menu {width:1000px; height:auto;  margin: 0 auto; }
 .foot_menu ul{display: flex; margin-left: 100px; margin-top: 35px; }
 .foot_menu li{padding-left: 30px;}
 .foot_menu a{color: white;}

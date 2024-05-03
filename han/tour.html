@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제목</title>
+    <!-- 메타포 -->
+    <!-- 바로가기 또는 파비콘 -->
+    <!-- 오픈그래프 -->
+    <!-- 폰트 로딩 -->
+    <!-- 외부 스타일 로딩 -->
+    <!-- 외부 js 라이브러리 로딩 -->
+    <link rel="stylesheet" href="subcommen.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css'><link rel="stylesheet" href="./slide.css">
+    
+    <style>
+    * { margin: 0; padding: 0; }
+    body { width:100%; overflow-x:hidden; }
+    .clr-fix { clear:both; }
+    .clr-fix:after { content:""; display:block; width:100%; clear:both;}
+    * { margin: 0; padding: 0; }
+    a { text-decoration: none;}
+    .wrap { position:relative; }
+    ul {list-style: none;}
+    </style>
+    
+    <style>
+    #hd { width: 100%; height: 120px; position:relative; border: 1px solid #333; background-color: rgba(99, 96, 53, 0.014);}
+    .banner {width: auto; height: 100%;}
+    .hd_wrap { clear:both; width: 100%; margin: 0 auto; }
+    #gnb {clear: both; width: 100%; position: absolute; z-index: 111;}
+    #gnb > .menu > li  { float:left; width: 14.28571428571429%;  text-align: center; } 
+    #gnb a.dp1 { background-color:rgba(16, 29, 99, 0.2); display:block; line-height: 50px; height: 50px;  color:#fff;} 
+
+    #gnb li:hover a.dp1 {background-color: rgba(238, 255, 0, 0.13);}
+    #gnb .sub {display: none;}
+    #gnb:hover .menu .sub {display: block;}
+    #gnb .menu li:hover .sub {background-color: #ccc;}
+
+    #gnb2 {display: none; }
+    #gnb2 {clear: both; width: 100%; position: fixed; z-index: 111;}
+    #gnb2 > .menu > li  { float:left; width: 14.28571428571429%;  text-align: center; } 
+    #gnb2 a.dp1 { background-color:#fff; display:block; line-height: 50px; height: 50px;  color:black;} 
+
+    #gnb2 li:hover a.dp1 {background-color: rgba(0, 255, 255, 0.13);}
+    #gnb2 .sub {display: none;}
+    #gnb2:hover .menu .sub {display: block;}
+    #gnb2 .menu li:hover .sub {background-color: #ccc;}
+    </style>
+
+    <style>
+    #contents { width: 100%;}
+    #vs { clear:both; width: 1930px; height:600px; overflow:hidden; position:relative; }
+    #vs img { display:block; width: 100%;  height: 600px; position:absolute; z-index: 0;}
+
+    .page { clear:both; width: 1280px; min-height:60vh; border: 1px solid #333; margin: 0 auto;}
+    .page:after { content:""; display:block; width:100%; clear:both; }
+    .page_title { text-align: center; padding-top: 2em; padding-bottom: 0.5em; }
+    .page_wrap { clear:both; width: 1280px; margin: 0 auto; }
+
+
+    #ft { width: 100%; border: 1px solid #333}   
+    .ft_wrap { clear:both; width: 1280px; height: 200px; margin: 0 auto; } 
+
+    </style>
+    <script>
+        window.addEventListener("scroll",function(){
+        var scrollposition = window.scrollY;
+        if(scrollposition > 1){
+            document.getElementById("gnb").style.display = "none";
+            document.getElementById("gnb2").style.display = "block";
+        } else {
+            document.getElementById("gnb").style.display = "block";
+            document.getElementById("gnb2").style.display = "none";
+        }})
+    </script>
+</head>
+<body>
+    <header class="hd clr-fix">
+        <div class="hd_wrap clr-fix">
+            <nav id="gnb2" class="clr-fix">
+                <ul class="menu clr-fix">
+                   <li ><a class="dp1" href=""><img class="banner clr-fix" src="https://placehold.it/100x100/333/" alt="배너"></li></a>
+                    <li class="item1">
+                        <a href="" class="dp1">사이트소개</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">서브01</a></li>
+                            <li><a href="" class="dp2">서브02</a></li>
+                            <li><a href="" class="dp2">서브03</a></li>
+                            <li><a href="" class="dp2">서브04</a></li>
+                            <li><a href="" class="dp2">서브05</a></li>
+                        </ul>
+                    </li>
+                    <li class="item2">
+                        <a href="" class="dp1">관광명소</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">서브01</a></li>
+                            <li><a href="" class="dp2">서브02</a></li>
+                            <li><a href="" class="dp2">서브03</a></li>
+                            <li><a href="" class="dp2">서브04</a></li>
+                            <li><a href="" class="dp2">서브05</a></li>
+                        </ul>
+                    </li>
+                    <li class="item3">
+                        <a href="" class="dp1">문화예술</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">서브01</a></li>
+                            <li><a href="" class="dp2">서브02</a></li>
+                            <li><a href="" class="dp2">서브03</a></li>
+                            <li><a href="" class="dp2">서브04</a></li>
+                            <li><a href="" class="dp2">서브05</a></li>
+                        </ul>
+                    </li>
+                    <li class="item4">
+                        <a href="" class="dp1">숙박/음식점</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">서브01</a></li>
+                            <li><a href="" class="dp2">서브02</a></li>
+                            <li><a href="" class="dp2">서브03</a></li>
+                            <li><a href="" class="dp2">서브04</a></li>
+                            <li><a href="" class="dp2">서브05</a></li>
+                        </ul>
+                    </li>
+                    <li class="item4">
+                        <a href="" class="dp1">참여공간</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">서브01</a></li>
+                            <li><a href="" class="dp2">서브02</a></li>
+                            <li><a href="" class="dp2">서브03</a></li>
+                            <li><a href="" class="dp2">서브04</a></li>
+                            <li><a href="" class="dp2">서브05</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="dp1" href="" class="dp2">로그인</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>   
+
+        <div class="hd_wrap clr-fix">
+            <nav id="gnb" class="clr-fix">
+                <ul class="menu clr-fix">
+                   <li ><a class="dp1" href=""><img class="banner clr-fix" src="https://placehold.it/100x100/333/" alt="배너"></li></a>
+                    <li class="item1">
+                        <a href="" class="dp1">사이트소개</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">서브01</a></li>
+                            <li><a href="" class="dp2">서브02</a></li>
+                            <li><a href="" class="dp2">서브03</a></li>
+                            <li><a href="" class="dp2">서브04</a></li>
+                            <li><a href="" class="dp2">서브05</a></li>
+                        </ul>
+                    </li>
+                    <li class="item2">
+                        <a href="" class="dp1">관광명소</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">서브01</a></li>
+                            <li><a href="" class="dp2">서브02</a></li>
+                            <li><a href="" class="dp2">서브03</a></li>
+                            <li><a href="" class="dp2">서브04</a></li>
+                            <li><a href="" class="dp2">서브05</a></li>
+                        </ul>
+                    </li>
+                    <li class="item3">
+                        <a href="" class="dp1">문화예술</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">서브01</a></li>
+                            <li><a href="" class="dp2">서브02</a></li>
+                            <li><a href="" class="dp2">서브03</a></li>
+                            <li><a href="" class="dp2">서브04</a></li>
+                            <li><a href="" class="dp2">서브05</a></li>
+                        </ul>
+                    </li>
+                    <li class="item4">
+                        <a href="" class="dp1">숙박/음식점</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">서브01</a></li>
+                            <li><a href="" class="dp2">서브02</a></li>
+                            <li><a href="" class="dp2">서브03</a></li>
+                            <li><a href="" class="dp2">서브04</a></li>
+                            <li><a href="" class="dp2">서브05</a></li>
+                        </ul>
+                    </li>
+                    <li class="item4">
+                        <a href="" class="dp1">참여공간</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">서브01</a></li>
+                            <li><a href="" class="dp2">서브02</a></li>
+                            <li><a href="" class="dp2">서브03</a></li>
+                            <li><a href="" class="dp2">서브04</a></li>
+                            <li><a href="" class="dp2">서브05</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="dp1" href="" class="dp2">로그인</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+</header>
+    <main id="contents" class="clr-fix">
+        <figure id="vs">
+            <img src="https://placehold.it/1930x600" alt="배너">
+        </figure>
+        <section class="page" id="page1">
+            <h2 class="page_title">산림</h2>
+            <div class="page_wrap">
+                <div class="main">
+                    <div class="slider slider-for">
+                      <div class="sliderbox"><img src="img/back01.jpg" alt=""></div>
+                      <div class="sliderbox">2</div>
+                      <div class="sliderbox">3</div>
+                      <div class="sliderbox">4</div>
+                      <div class="sliderbox">5</div>
+                    </div>
+                    <div class="slider slider-nav">
+                      <div class="sliderbox1"><img src="img/back01.jpg" alt=""></div>
+                      <div class="sliderbox1">2</div>
+                      <div class="sliderbox1">3</div>
+                      <div class="sliderbox1">4</div>
+                      <div class="sliderbox1">5</div>
+                    </div>
+                    <!-- <div class="action">
+                      <a href="#" data-slide="3">3page</a>
+                      <a href="#" data-slide="4">4page</a>
+                      <a href="#" data-slide="5">5page</a>
+                    </div> -->
+                  </div>
+            </div>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js'></script><script  src="./slide.js"></script>
+        </section>
+        <section class="page" id="page2">
+            <h2 class="page_title">페이지 제목2</h2>
+            <div class="page_wrap">
+                2페이지 내용
+            </div>
+        </section>
+        <section class="page" id="page3">
+            <h2 class="page_title">페이지 제목3</h2>
+            <div class="page_wrap">
+                3페이지 내용
+            </div>
+        </section>
+    </main>
+    <footer id="ft" class="clr-fix">
+        <div class="ft_wrap">푸터</div>
+    </footer>
+</body>
+</html>

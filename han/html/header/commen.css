@@ -15,7 +15,8 @@ ul {list-style: none;}
 #gnb > .menu > li  { float:left; width: 14.28571428571429%;  text-align: center; } 
 #gnb a.dp1 { background-color:rgba(16, 29, 99, 0.2); display:block; line-height: 50px; height: 50px;  color:#fff;} 
 
-#gnb li:hover a.dp1 {background-color: rgba(238, 255, 0, 0.13);}
+
+/* #gnb li:hover a.dp1 {background-color: rgba(238, 255, 0, 0.13);} */
 #gnb .sub {display: none;}
 #gnb:hover .menu .sub {display: block;}
 #gnb .menu li:hover .sub {background-color: #ccc;}

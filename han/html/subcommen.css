@@ -43,14 +43,8 @@ ul {list-style: none; margin: 0 auto;}
 .page_title { text-align: center; padding-top: 2em; padding-bottom: 0.5em; }
 .page_wrap { clear:both; width: 1280px; margin: 0 auto; }
 
-/* main  lineimg*/
-.line {background-color: #14a3f7; width: 1200px; height: 80px;  display: flex; justify-content: center; align-items: center; }
-.linesize {width: 50px; height: 50px; margin: 0 auto;} 
-.imgsize {width: 100%; height: 100%;}
-#linebag {background-color:#14a3f7;}
 
-/* main page 4 */
-
+/* main img */
 
 
 

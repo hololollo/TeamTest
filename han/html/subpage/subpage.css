@@ -23,6 +23,8 @@ ul {list-style: none;}
 #gnb .menu .sub li:hover {background-color: aqua;}
 
 
+
+
 #gnb2 {display: none; }
 #gnb2 {clear: both; width: 100%; position: fixed; z-index: 111;}
 #gnb2 > .menu > li  { float:left; width: 14.28571428571429%;  text-align: center; } 
@@ -44,6 +46,7 @@ ul {list-style: none;}
 #vs { clear:both; width: 1930px; height: 600px; overflow:hidden; position:relative; margin: 0 auto;}
 #vs img { display:block; width: 100%;  height: 100%; position:absolute;  z-index: 0px;}
 .pagepage {width: 100% ; height: 2000px; background-color: #ccc;} 
+
 
 #page2 {width: 1280px; padding-bottom: 2rem;}
 

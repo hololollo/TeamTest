@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭</title>
+    <style>
+   
+
+    #tab2 { position:relative; width: 600px; height: 350px;  clear:both; margin: 10px auto;  }
+    .btn_box .ra_btn { display:inline-block; width: 120px; height: 40px; line-height: 40px; text-align: center; background-color:#333; color:#fff; border-radius:10px 10px 0px 0px; }
+    .ra_item { display:none; }
+    .tab_con_box { display:none; }
+    #ra1:checked ~ .tab_con_wrap #tab_con_box1 { display:block; }
+    #ra2:checked ~ .tab_con_wrap #tab_con_box2 { display:block; }
+    #ra3:checked ~ .tab_con_wrap #tab_con_box3 { display:block; }
+    #ra1:checked ~ .btn_box label:first-child { background-color: deepskyblue; }
+    #ra2:checked ~ .btn_box label:nth-child(2) { background-color: deepskyblue; }
+    #ra3:checked ~ .btn_box label:last-child { background-color: deepskyblue; }
+
+
+
+    
+    </style>
+</head>
+<body>
+  
+    <h2 class="title">탭2</h2>
+    <div class="wrap">
+        <nav id="tab2">
+            <div class="tb_wrap">
+                <input type="radio" class="ra_item" name="tb_ra2" id="ra1" checked>
+                <input type="radio" class="ra_item" name="tb_ra2" id="ra2">
+                <input type="radio" class="ra_item" name="tb_ra2" id="ra3">
+                <div class="btn_box">
+                    <label for="ra1" class="ra_btn">아이템1</label>
+                    <label for="ra2" class="ra_btn">아이템2</label>
+                    <label for="ra3" class="ra_btn">아이템3</label>
+                </div>
+                <div class="tab_con_wrap">
+                    <div class="tab_con_box" id="tab_con_box1">
+                        <img src="https://placehold.it/600x300/693" alt="탭이미지">
+                    </div>
+                    <div class="tab_con_box" id="tab_con_box2">
+                        <img src="https://placehold.it/600x300/333" alt="탭이미지">
+                    </div>
+                    <div class="tab_con_box" id="tab_con_box3">
+                        <img src="https://placehold.it/600x300/936" alt="탭이미지">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <script>
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");    
+    var btn3 = document.getElementById("btn3");
+    var tbox1 = document.getElementById("tbox1");
+    var tbox2 = document.getElementById("tbox2");
+    var tbox3 = document.getElementById("tbox3");
+    tab("btn1");
+    function tab(btn) {
+        if(btn=="1"){
+            tbox1.style.display = "block";
+            tbox2.style.display = "none";
+            tbox3.style.display = "none";
+            btn1.style.backgroundColor = "deepskyblue";
+            btn2.style.backgroundColor = "#333";
+            btn3.style.backgroundColor = "#333";
+        } else if(btn=="2") {
+            tbox1.style.display = "none";
+            tbox2.style.display = "block";
+            tbox3.style.display = "none";
+            btn1.style.backgroundColor = "#333";
+            btn2.style.backgroundColor = "deepskyblue";
+            btn3.style.backgroundColor = "#333";
+        } else if(btn=="3"){
+            tbox1.style.display = "none";
+            tbox2.style.display = "none";
+            tbox3.style.display = "block";
+            btn1.style.backgroundColor = "#333";
+            btn2.style.backgroundColor = "#333";
+            btn3.style.backgroundColor = "deepskyblue";
+        } else {
+            tbox1.style.display = "block";
+            tbox2.style.display = "none";
+            tbox3.style.display = "none";
+            btn1.style.backgroundColor = "deepskyblue";
+            btn2.style.backgroundColor = "#333";
+            btn3.style.backgroundColor = "#333";
+        }
+    }
+    </script>
+</body>
+</html>

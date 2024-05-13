@@ -21,7 +21,8 @@ ul {list-style: none; margin: 0 auto;}
 #gnb li:hover a.dp1 {background-color: rgba(238, 255, 0, 0.13);}
 #gnb .sub {display: none;}
 #gnb:hover .menu .sub {display: block;}
-#gnb .menu li:hover .sub {background-color: #ccc;}
+#gnb .menu li:hover .sub {background-color: rgba(150, 164, 228, 0.13);}
+
 
 #gnb2 {display: none; }
 #gnb2 {clear: both; width: 100%; position: fixed; z-index: 111;}
@@ -35,8 +36,8 @@ ul {list-style: none; margin: 0 auto;}
 
 /* main */
 #contents { width: 100%;}
-#vs { clear:both; width: 100%; height: 600px;; overflow:hidden; position:relative; }
-#vs img { display:block; width: 100%;  height: 600px; position:absolute; z-index: 0;}
+#vs { clear:both; width: 1930px; height: 600px;; overflow:hidden; position:relative; margin: 0 auto;}
+#vs img { display:block; width: 1930px;  height: 600px; position:absolute; z-index: 0; }
 
 .page { clear:both; width: 1280px; min-height:60vh; border: 1px solid #333; margin: 0 auto;}
 .page:after { content:""; display:block; width:100%; clear:both; }

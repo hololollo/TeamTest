@@ -18,8 +18,10 @@ ul {list-style: none;}
 
 #gnb .sub {display: none; line-height: 50px; background-color: rgba(9, 5, 31, 0.562);}
 #gnb:hover .menu .sub {display: block;}
-#gnb .menu li:hover .sub {background-color: #fff; }
+#gnb .menu li:hover .sub {background-color: rgba(254, 255, 255, 0.322); }
 #gnb .menu li:hover a.dp2 {color: black; font-weight: 500px;}
+#gnb .menu .sub li:hover {background-color: aqua;}
+
 
 #gnb2 {display: none; }
 #gnb2 {clear: both; width: 100%; position: fixed; z-index: 111;}

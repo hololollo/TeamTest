@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet"> -->
-    <link rel="stylesheet" href="./css/commen.css">
+    <link rel="stylesheet" href="${path2 }/css/commen.css">
     <link rel="stylesheet" href="fonts.css">
     <script>
         window.addEventListener("scroll",function(){
@@ -38,7 +38,7 @@
         <div class="hd_wrap clr-fix">
             <nav id="gnb2" class="clr-fix">
                 <ul class="menu clr-fix">
-                   <li ><a class="dp1" href=""><img class="banner clr-fix" src="img/darklogo.png"배너"></a></li>
+                   <li ><a class="dp1" href=""><img class="banner clr-fix" src="img/darklogo.png" alt="배너"></a></li>
                     <li class="item1">
                         <a href="" class="dp1">사이트소개</a>
                         <ul class="sub">

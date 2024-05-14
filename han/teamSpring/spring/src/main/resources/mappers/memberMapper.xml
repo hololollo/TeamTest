@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<select id="getMemberList" resultType="com.spring.dto.Member">
+		select * from member order by resdate desc
+	</select>	
+	<select id="getMember" resultType="com.spring.dto.Custom">
+		select * from member where id=#{id}
+	</select>
+	<select id="maxNum" resultType="int">
+		select count(*) from member
+	</select>
+	<insert id="insCustom">
+		insert into member values (#{id}, #{pw},#{name},#{email},#{tel}, #{addr}, #{postcode}, default)
+	</insert>
+	<update id="changePw">
+		update member set pw=#{pw} where id=#{id}
+	</update>
+	<update id="changeInfo">
+		update member set name=#{name},email=#{email}, tel=#{tel}, addr=#{addr}, postcode=#{postcode}, where id=#{id}
+	</update>
+	<delete id="delCustom"> 
+		delete from member where id=#{#id}
+	</delete>
+</mapper>
+<!-- 해당 요소의 id는 중복되어서도 안되며, 메소드 이름을 의미합니다. -->

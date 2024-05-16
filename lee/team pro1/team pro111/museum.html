@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="./style__museum.css">
+    <link rel="stylesheet" href="./footer.css">     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+
+    <style>
+         * { margin: 0; padding: 0; }
+        body { width:100%; height: auto; } 
+        .museum_wrap{width: 100%;}
+        .museum_header{ width: 1290px; height: 600px; margin: 0px auto;}
+        .museum_contents {width: 1290px; height: 1200px; margin: 50px auto;}
+        hr{height: 2px; background-color: #333; margin: 10px auto; }
+
+        .museum_wrap p{font-family: "Nanum Gothic", sans-serif; font-size: 13px; }
+        .museum_contents p{ font-size: 30px; font-weight:bold;}
+
+        
+    </style>
+</head>
+<body>
+    <div class="museum_wrap">
+        <div class="museum_header" >
+            <img class="" src="img/museum_main.jpg" alt="헤드이미지" width="1290px" height="600px">
+        </div>
+        <div class="museum_contents">
+            <p class="contents_title">박물관 </p>
+            <hr>
+            <div class="container">
+                <div class="card-column column-0">
+                  <div class="card card-color-0">
+                    <div class="border"></div>
+                    <img src="img/속초시립박물관.jpg" alt="속초시립박물관" />
+                    <h1>속초 시립 박물관</h1>
+                  </div>
+                  <div class="card card-color-2">
+                    <div class="border"></div>
+                    <img src="img/국립산악박물관2.jpg" alt="국립산악박물관" />
+                    <h1>국립산악 박물관</h1>
+                  </div>
+                </div>
+                <div class="card-column column-1">
+                  <div class="card card-color-1">
+                    <div class="border"></div>
+                    <img src="img/석봉도자기 미술관3.jpg" alt="석봉도자기 미술관" />
+                    <h1>석봉도자기미술관</h1>
+                  </div>
+                  <div class="card card-color-3">
+                    <div class="border"></div>
+                    <img src="img/뮤지엄엑스4.jpg"  alt="뮤지엄엑스"/>
+                    <h1>뮤지엄엑스</h1>
+                  </div>
+                </div>
+              </div>
+              
+              <div id="cover" class="cover"></div>
+              
+              <div id="open-content" class="open-content">
+                <a href="#" id="close-content" class="close-content"><span class="x-1"></span><span class="x-2"></span></a>
+                <img id="open-content-image" src="" />
+                <div class="text" id="open-content-text">
+                </div>
+              </div>
+              <script  src="./script_museum.js"></script>
+        </div>
+    </div>
+    <footer>
+        <br>
+        <hr>
+        <div class="fc_wrap" >
+            <a href =""><img src="./img/footer_logo.png" alt="속초속촉로고"  class="logo"> </a>
+            <nav class="foot_menu">
+                <ul>
+                    <li><a href="">회원약관</a></li>
+                    <li><a href="">개인정보처리방침</a></li>
+                    <li><a href="">오시는길</a></li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                <p class="addr"> [24826] 강원특별자치도 속초시 중앙로 183 속초시문화관광, 대표전화 : 033-639-2114 | FAX : 033-639-2330(평일 주간/야간 당직실, 공휴일)</p>
+                <p class="copy">Copyright © Sokchosockchock All Rights Reserved.</p>
+            </div>
+            <div class="drop">
+                <select name="sel" id="sel" onchange="locate()">
+                    <option value="">해당 관광서</option>
+                    <option value="https://www.sokcho.go.kr/">속초시청</option>
+                    <option value="https://www.sokchotour.com/tour">그곳속초(속초관광)</option>
+                    <option value="http://sokchocf.or.kr/sokchocf">속초문화관광재단</option>
+                </select>
+            </div>
+            <script>
+            function locate(){
+                var sel = document.getElementById("sel");
+                if(sel.value!=""){
+                    window.open(sel.value);
+                }
+            }
+            </script>
+        </div>    
+    </footer>
+</body>
+</html>

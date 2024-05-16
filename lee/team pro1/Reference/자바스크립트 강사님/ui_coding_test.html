@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{text-align: center; padding-top: 20px; padding-bottom: 10px;}
+        .table{width: 900px; height: 600px; margin: 30px auto; border: 1px solid black; background-color: lightsteelblue; border-radius: 10px;}
+
+        .wrap { clear:both; width: 100%; height:auto; min-height:100px; margin-top: 30px; 
+        display: flex; justify-content: center;   align-items: center;  }
+        
+        #result { width:200px; height:400px; background-color:yellow; color:red; 
+        font-size:20px; text-align:right; font-weight:bold; 
+        border:3px solid #000;  display: flex; justify-content:right;  align-items:center; }
+
+        #btn { display:inline block; width: 70px; line-height: 20px; 
+        margin: 0px; margin-left: 100px; clear:both; background-color:navy; color: wheat;  }
+        #btn2  { display:inline block; width: 70px;  line-height: 20px; 
+        margin: 0px 10px ; margin-right: 100px; clear:both; background-color:navy; color: wheat;  }
+        .btntd{text-align: center;}
+        
+        /*라디오버튼꾸미기*/
+        .select {padding: 15px 10px;}
+        .select input[type=radio]{display: none;}
+        .select input[type=radio]+label{ display: inline-block; height: 24px;  width: 90px; border: 1px solid #333; line-height: 24px; text-align: center; font-weight:bold; font-size:13px;}
+        .select input[type=radio]+label{ background-color: #fff; color: #333;}
+        .select input[type=radio]:checked+label{ background-color:navy; color: #fff;}
+
+    </style>
+</head>
+<body>
+    <h1 class="title">ui coding test 이종우</h1>
+    <hr>
+    <form name="ui">
+        <table class="table" cellspacing="20">
+            <tr>
+               <th>너비 : </th>
+               <td><input type="text" name="w" id="w" value="200" size="8"> px</td>
+               <th>높이 :</th>
+               <td><input type="text" name="h" id="h" value="400" size="8"> px</td>
+            </tr>
+            <tr>
+               <th>글자크기 : </th>
+               <td><input type="text" name="font" id="font" value="20" size="8"> px</td>
+               <th>굵기 :</th>
+               <td class="select">
+                <input type="radio" name="font_w" id="font_w1" value="normal" ><label for="font_w1">보통</label>
+                <input type="radio" name="font_w" id="font_w2" value="bolder" checked><label for="font_w2">굵게</label>
+               </td>
+            </tr>
+            <tr>
+                <th>글자색 : </th>
+                <td><input type="text" name="color" id="color" value="red" size="20"> px</td>
+                <th>배경색:</th>
+                <td><input type="text" name="bg_color" id="bg_color" value="yellow" size="20"> px</td>
+            </tr>
+            <tr>
+                <th>가로정렬 :</th>
+                <td class="select">
+                    <input type="radio" name="h_align" id="h_align1" value="left"> <label for="h_align1">왼쪽</label>
+                    <input type="radio" name="h_align" id="h_align2" value="center"> <label for="h_align2">가운데</label>
+                    <input type="radio" name="h_align" id="h_align3" value="right" checked> <label for="h_align3">오른쪽</label>
+                </td>
+            </tr>
+            <tr>
+                <th>세로정렬 : </th>
+                <td class="select"> 
+                    <input type="radio" name="w_align" id="w_align1" value="flex-start"><label for="w_align1">위</label>
+                    <input type="radio" name="w_align" id="w_align2" value="center" checked><label for="w_align2">가운데</label>
+                    <input type="radio" name="w_align" id="w_align3" value="flex-end"><label for="w_align3">아래</label>
+                </td>
+            </tr>
+            <tr>
+                <th>출력문자열 :</th>
+                <td colspan="3">
+                    <input type="text" size="80" maxlength="40" name="txt" id="txt" value="Hello World">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="btntd"><button type="button" id="btn">적용하기</button>
+                    <button type="button" id="btn2">새로고침</button></td></td>
+            </tr>
+        </table>
+    </form>
+    <div class="wrap" id="canvas">
+        <div id="result">
+            Hello World
+        </div>
+    </div>
+    <script>
+    var txt = document.getElementById("txt");
+    var result = document.getElementById("result");    
+    function fnc1() {
+        result.innerHTML = txt.value;
+        result.style.width = document.getElementById("w").value + "px";
+        result.style.height = document.getElementById("h").value + "px";
+        result.style.fontSize = document.getElementById("font").value+"px";
+        result.style.fontWeight = document.ui.font_w.value;
+        result.style.color = document.getElementById("color").value;
+        result.style.backgroundColor = document.getElementById("bg_color").value;
+        result.style.justifyContent = document.ui.h_align.value;
+        result.style.alignItems = document.ui.w_align.value;
+    }   
+    document.getElementById("btn").addEventListener("click", function() { fnc1(); }); 
+
+    /*새로고침 기능 자바스크립트 하하하 */
+    function refresh() {
+    document.getElementById("w").value = "200";
+    document.getElementById("h").value = "400";
+    document.getElementById("font").value = "20";
+    document.getElementById("font_w2").checked = true;
+    document.getElementById("color").value = "red";
+    document.getElementById("bg_color").value = "yellow";
+    document.getElementById("h_align3").checked = true; 
+    document.getElementById("w_align2").checked = true; 
+    document.getElementById("txt").value = "Hello World";
+
+    
+    result.innerHTML = "Hello World";
+    result.style.width = "200px";
+    result.style.height = "400px";
+    result.style.fontSize = "20px";
+    result.style.fontWeight = "bolder";
+    result.style.color = "red";
+    result.style.backgroundColor = "yellow";
+    result.style.justifyContent = "right";
+    result.style.alignItems = "center";
+    }
+    document.getElementById("btn2").addEventListener("click", function() { refresh(); });
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         * { margin: 0; padding: 0; }
+        body { width:100%; overflow-x:hidden; color:#000; }
+
+        .title{text-align: center; padding-top: 20px; padding-bottom: 10px;}
+        .title2{text-align: center; padding-top:20px; padding-bottom: 10px;}
+        .table{width: 900px; margin: 50px auto; border: 1px solid black; background-color: lightgray; border-radius: 20px;}
+        #btn1{display: block; width: 200px; text-align: center;  margin: 10px auto; clear: both; line-height: 30px; border-radius: 5px;  background-color: burlywood;} 
+        .wrap { clear:both; width: 900px;  height:auto; min-height:100px; margin-top: 30px; 
+        display: flex; justify-content: center;   align-items: center; margin: 20px auto; border: 1px solid black;}
+        #result { width:400px; height:400px; background-color:yellow; color:red; 
+        font-size:20px; text-align:right; font-weight:bold; 
+        border:3px solid #000;  display: flex; justify-content:right;  align-items:center; }
+    </style>
+</head>
+<body>
+    <h1 class="title">상자만들기</h1>
+    <hr>
+    <form name="ui">
+        <table class="table" cellspacing="50">
+            <tr>
+                <th>넓이</th>
+                <td><input type="text" name="w" id="w" value="100">px</td>
+                <th>높이</th>
+                <td><input type="text" name="h" id="h" value="100">px</td>
+            </tr>
+            <tr>
+                <th>글자크기</th>
+                <td><input type="text" name="font_size" id="font-size" value="50">px</td>
+                <th>굵기</th>
+                <td>
+                보통  <input type="radio" name="font_weight" id="font_weight1" value="normal">
+                굵게  <input type="radio" name="font_weight" id="font_weight2" value="bold">
+                </td>
+            </tr>
+            <tr>
+                <th>글자색</th>
+                <td><input type="text" name="color" id="color" value="red"></td>
+                <th>배경색</th>
+                <td><input type="text" name="bg_color" id="bg_color" value="black"></td>
+            </tr>
+            <tr>
+                <th>가로정렬</th>
+                <td>
+                 왼쪽 <input type="radio" name="h_align" id="h_align1" value="left">
+                 가운데 <input type="radio" name="h_align" id="h_align2" value="center" checked>
+                 오른쪽 <input type="radio" name="h_align" id="h_align3" value="right">
+                </td>
+            </tr>
+            <tr>
+                <th>세로정렬 : </th>
+                <td colspan="3">위 
+                    <input type="radio" name="v_align" id="v_align1" value="flex-start"> 
+                    가운데 
+                    <input type="radio" name="v_align" id="v_align2" value="center"  checked> 
+                    아래 
+                    <input type="radio" name="v_align" id="v_align3" value="flex-end">
+                </td>            
+            </tr>
+            <tr>
+                <th>출력문자열</th>
+                <td colspan="3"><input type="text" name="txt" id="txt" value="ljw" size="60px"></td>
+            </tr>
+            <tr>
+                <td colspan="4"><button type="button"  name="btn1" id="btn1">적용하기</button></td>
+            </tr>
+        </table>
+    </form>
+    <h2 class="title2">출력화면</h2>
+    <div class="wrap" id="canvas">
+        
+        <div id="result">
+            이종우
+        </div>
+    </div>
+    <script>
+    var txt = document.getElementById("txt");
+    var result = document.getElementById("result");    
+    function fnc1() {
+        result.innerHTML = txt.value;
+        result.style.width = document.getElementById("w").value + "px";
+        result.style.height = document.getElementById("h").value + "px";
+        result.style.fontSize = document.getElementById("font_size").value+"px";
+        result.style.fontWeight = document.ui.font_weight.value;
+        result.style.color = document.getElementById("color").value;
+        result.style.backgroundColor = document.getElementById("bg_color").value;
+        result.style.justifyContent = document.ui.h_align.value;
+        result.style.alignItems = document.ui.v_align.value;
+    }   
+    document.getElementById("btn1").addEventListener("click", function() { fnc1(); }); 
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인페이지</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      *{margin:0; padding:0;}
+        body,html{width:100%; overflow-x: hidden;}
+        ul {list-style:none;}
+        a{text-decoration: none;}       
+        
+        .section1{ background-image: url("img/hwagok1.png");  background-size: cover;  background-position: center;   width: 100%; height:950px;}
+        .section2 {
+            display: grid;
+            width: 100%;
+            height: 1200px;
+          
+        }
+        .section3{display: flex; background-color:#ffffff; width: 100%; height: 1000px; }
+
+        #gnb3 { clear:both; width: 100%; position:absolute; }
+        #gnb3 > .menu > li {  float:left;  text-align: center; }   
+        #gnb3 a.dp1 { background-color:rgba(51, 51, 51, 0.5);; color:#fff; display:block; 
+        line-height: 104px; }
+        #gnb3 li:hover a.dp1 { background-color:rgba(51, 51, 51, 0.8); color: orange; }
+        #gnb3 .sub { display:none; }
+        #gnb3 .menu li:hover .sub { display:block; background-color:rgba(51, 51, 51, 0.5);  }
+        #gnb3 .menu li .sub li:hover{background-color:rgba(51, 51, 51, 0.7);}
+        #gnb3 .menu li .sub li:hover a{color: orange;}
+        #gnb3 .menu li:hover .sub li a{color: white;}
+       .logo{display: block; background-color:rgba(51, 51, 51, 0.5);}
+        .log{background-color:rgba(51, 51, 51, 0.5);; color:#fff; display:block; line-height: 104px; }
+        .log > a{color: white; font-size: 25px;}
+        .log:hover >a{color: orange;}
+        .join{background-color:rgba(51, 51, 51, 0.5);; color:#fff; display:block; line-height: 104px;}
+        .join:hover >a{color: orange;}
+        .join >a{color: white; font-size: 25px; font}
+      
+       .section2 > .center {
+            background-color: #ccc;
+            box-sizing: border-box;
+            margin: auto;
+            width: 1500px;
+            height:1000px;
+        }
+      .box1{float:left; width: 500px; height: 500px; margin-top:0px ; background-color: black;}
+      .box21{float:left; width: 500px; height: 500px; margin-bottom: 0px; background-color:#EAE8E8;}
+      .box22{float:left; width: 500px; height: 500px; margin-bottom: 0px; background-color:#C1CACC;}
+      .box23{float:left; width: 500px; height: 500px; margin-bottom: 0px; background-color:#EAE8E8;}
+
+      .bab {margin-top:70px; margin-left:200px;}
+      .train{margin-top:70px ; margin-left: 200px;}
+      .bed{margin-top:70px ; margin-left: 200px;}
+
+      #button1{ font-weight: bold; font-size: 25px; color: white; width: 183px; height: 66px; background: #526978; border-radius: 3px; margin: auto; display: block; margin-top: 20px;}
+      #button2{ font-weight: bold; font-size: 25px; color: white; width: 183px; height: 66px; background: #526978; border-radius: 3px; margin: auto; display: block; margin-top: 20px;}
+      #button3{ font-weight: bold; font-size: 25px; color: white; width: 183px; height: 66px; background: #526978; border-radius: 3px; margin: auto; display: block; margin-top: 20px;}
+
+        th{border-right:1px solid black ;}
+
+
+      footer { width:100%; height: 200px; margin:0 auto; background-color: #1F1E2C; }
+            #foot {position:relative; width:800px; height:48px;   }
+            .foot ul {margin-top:20px; margin-left:300px;  height:48px; }
+            .foot li { float:left; width: auto; margin-right: 50px; line-height:48px;  }
+            .foot li a { color:#fff; font}
+            .copyright { margin-left: 300px; margin-top: 40px; width:100%;  }
+            .copyright p{color:#fff}
+            hr{color: #fff; }
+            .logo1{position: absolute; margin-top: 20px; margin-left:20px ;clear:both; float:left; width:200px; height: 150px;}
+            #drop {position:absolute; right: 150px;  }
+            a{font-family: "Nanum Gothic", sans-serif; font-weight: bold ;}
+            p{font-family: "Nanum Gothic", sans-serif; font-size: 15px; }
+            
+    </style>
+
+       
+      
+  
+</head>
+<body>
+    <section class="section1">
+        <div class="wrap ">
+            <nav id="gnb3">
+                <ul class="menu">
+                    <li class="" style="width: 17.2%;">
+                        <a href="" class="logo"><img src="./img/logo2.png" alt="메뉴바로고" width="150" height="100" /></a>
+                    </li>   
+                    <li style="width: 17.2%;">
+                        <a href="" class="dp1">지역소개</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">지역유래</a></li>
+                            <li><a href="" class="dp2">연혁</a></li>
+                            <li><a href="" class="dp2">오시는길</a></li>
+                    
+                        </ul>
+                    </li>
+                    <li style="width: 17.2%;">
+                        <a href="" class="dp1">시설 및 상권안내</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">관공서</a></li>
+                            <li><a href="" class="dp2">학교</a></li>
+                            <li><a href="" class="dp2">병원</a></li>
+                            <li><a href="" class="dp2">숙박 및 시설안내</a></li>
+                        </ul>
+                    </li>
+                    <li style="width: 17.2%;">
+                        <a href="" class="dp1">교통안내</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">버스</a></li>
+                            <li><a href="" class="dp2">지하철</a></li>
+                            <li><a href="" class="dp2">공항</a></li>
+                        </ul>
+                    </li>
+                    <li style="width: 17.2%;">
+                        <a href="" class="dp1">커뮤니티</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">공지사항</a></li>
+                            <li><a href="" class="dp2">묻고답하기</a></li>
+                            <li><a href="" class="dp2">Q&A</a></li>
+                        </ul>
+                    </li>
+                    <li class="log" style="width: 7%; padding-right: 0px;">
+                        <img src="./img/Person.png" alt="로그인이미지" style="vertical-align: middle; margin-bottom: 5px;" width="50px" height="50px ">
+                        <a href="" style="float: right; padding-right: 5px;">LogIn</a>
+                    </li>
+                    <li class="join" style="width: 7%;">
+                        <p style="float: left; font-size: 25px;">/</p>
+                        <a href="" style="float:left; padding-left: 5px;">Join</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <section class="section2">
+        <div class="center">
+            
+            <div class="one">
+                <div class="box1"><img src="./img/section21.png" alt="맛집 best" width="500px" height="500px"></div>
+                <div class="box1"><img src="./img/section22.png" alt="교통" width="500px" height="500px"></div>
+                <div class="box1"><img src="./img/section23.png" alt="숙박" width="500px" height="500px"></div>
+            </div>
+            <div class="two">
+                <div class="box21"><img src="./img/bab.png" alt="밥아이콘" class="bab" width="100px" height="100px">
+                <h1 id="" style="font-size: 40px; text-align: center;" >맛집</h4>
+                    <a style="font-size: 30px; font-weight: bold; text-align: center; display: block;"><br>화곡동 5대맛집 먹자골목등 <br> 다양한 식당 추천안내</a>
+                    <button type="button" id="button1">맛집안내</button>
+                </div>
+                <div class="box22"><img src="./img/Train Station.png" alt="기차아이콘" class="train" width="100px" height="100px">
+                <h1 id="" style="font-size: 40px; text-align: center;" >교통</h4>
+                    <a style="font-size: 30px; font-weight: bold; text-align: center; display: block;"><br>지하철, 버스, 항공등 <br> 대중교통 안내</a>
+                    <button type="button" id="button2">교통안내</button>
+                </div>
+                <div class="box23"><img src="./img/Bedroom.png" alt="침대아이콘" class="bed" width="100px" height="100px">
+                <h1 id="" style="font-size: 40px; text-align: center;" >숙박</h4>
+                    <a style="font-size: 30px; font-weight: bold; text-align: center; display: block;"><br>화곡동내에 호텔 ,모텔등의 <br> 다양한 숙박업소와 평점안내</a>
+                    <button type="button" id="button3">숙박안내</button>
+                </div>
+            </div>
+        </div>
+       
+    </section>
+    <section class="section3">
+            <div class="notibox" style="width:1500px; height: 800px; margin:auto auto; background-color:#F8F6F5; border-radius: 20px; box-sizing: border-box; box-shadow: 20px 20px 4px rgba(0, 0, 0, 0.4);">	
+                <h3 class="page_title" style="font-size:36px; padding-top:2em; text-align:center;">최근 공지사항</h3>
+                <div class="right_item" style="text-align:right;  padding-bottom:12px; margin-right: 150px;">
+                    <a href="" title="더보기" class="more">
+                        <a href="" class="">+더보기</a>
+                    </a>
+                </div>
+                
+                <table class="table" id="tb3" style="width: 1200px; height: auto; margin: auto 150px; background-color: white;">
+                    <thead>
+                        <tr>
+                            <th class="item1" style="width: 10%; border-left: 1px solid black ;">번호</th>
+                            <th class="item2" style="width: 50%;">제목</th>
+                            <th class="item3" style="width: 20%;">작성일</th>
+                            <th class="item4" style="width: 20%;">조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                        <tr>
+                            <td>1</td>
+                            <td><a href="">더미게시글1</a></td>
+                            <td>2024-04-29</td>
+                            <td>9999</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a href="">더미게시글2</a></td>
+                            <td>2024-04-28</td>
+                            <td>887</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><a href="">더미게시글3</a></td>
+                            <td>2024-04-22</td>
+                            <td>1</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </section>
+    <footer>
+        <div class="footer">
+            <br>
+            <hr>
+            <a href =""><img src="./img/logo2.png" alt="로고"  class="logo1"> </a>
+            <nav class="foot">
+                <ul>
+                    
+                    <li><a href="">회원약관</a></li>
+                    <li><a href="">개인정보처리방침</a></li>
+                    <li><a href="">오시는길</a></li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                <p class="addr">(우) 07658 서울특별시 강서구 화곡로 302(화곡동), TEL : 02-2600-6114(120다산콜센터로 연결) 02-2600-6330(평일 주간/야간 당직실, 공휴일)</p>
+                <p class="copy">COPYRIGHT © 2021 GANGSEO-GU. ALL RIGHTS RESERVED.</p>
+            </div>
+            <div id="drop">
+                <select name="sel" id="sel" onchange="locate()">
+                    <option value="">해당 관광서</option>
+                    <option value="https://www.sokcho.go.kr/">강서구청</option>
+                    <option value="https://www.sokchotour.com/tour">화곡동주민센터(화곡동)</option>
+                    <option value="http://sokchocf.or.kr/sokchocf">화곡문화회관</option>
+                </select>
+                
+            </div>
+        </div> 
+        <script>
+            function locate(){
+                var sel = document.getElementById("sel");
+                if(sel.value!=""){
+                    window.open(sel.value);
+                }
+            }
+            </script>
+        </body>
+        </html>
+    </footer>
+</body>
+</html>

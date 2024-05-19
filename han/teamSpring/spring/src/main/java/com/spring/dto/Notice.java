@@ -1,5 +1,17 @@
 package com.spring.dto;
 
-public class Notice {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Notice {
+	private int bno;
+	private String title;
+	private String content;
+	private String author;
+	private int vcnt;
+	private String resdate;
 }

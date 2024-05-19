@@ -8,14 +8,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home(index.html)</title> 
-
+	<title>Home</title> 
+	<style>
+	img {width: 100px; height: 100px} 
+	</style>
 </head>
 <body>
-	<ul>
-		<!-- 로그인 -> 회원약관 -> 회원가입으로 넘어가도록 -->
-		<li><a href="${path1 }/member/login.do">로그인</a></li>
+	<img alt="" src="${path1 }/img/back01.jpg">
+	<%= request.getContextPath() %>
 	
-	</ul>
+
 </body>
 </html>

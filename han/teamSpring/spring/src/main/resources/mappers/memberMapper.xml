@@ -13,13 +13,13 @@
 		select count(*) from member
 	</select>
 	<insert id="insCustom">
-		insert into member values (#{id}, #{pw},#{name},#{email},#{tel}, #{addr}, #{postcode}, default)
+		insert into member values (#{id}, #{pw},#{name},#{birth}, #{email},#{tel}, #{addr}, #{postcode}, default)
 	</insert>
 	<update id="changePw">
 		update member set pw=#{pw} where id=#{id}
 	</update>
 	<update id="changeInfo">
-		update member set name=#{name},email=#{email}, tel=#{tel}, addr=#{addr}, postcode=#{postcode}, where id=#{id}
+		update member set name=#{name},#{birth},email=#{email}, tel=#{tel}, addr=#{addr}, postcode=#{postcode}, where id=#{id}
 	</update>
 	<delete id="delCustom"> 
 		delete from member where id=#{#id}

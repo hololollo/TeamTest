@@ -8,14 +8,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home(index.html)</title> 
-
+	<div id="" > <!-- login 할 경우 로그아웃 으로 변경 -->
+		<c:if test="${not empty sid }">
+		<h2 style="text-align:center;">${sname } 님 환영합니다.</h2>
+		</c:if>
+		<c:if test="${empty sid }">
+		<h2 style="text-align:center;">모든 서비스를 활용시 로그인 요망</h2>
+		</c:if>
+	</div>
 </head>
 <body>
-	<ul>
-		<!-- 로그인 -> 회원약관 -> 회원가입으로 넘어가도록 -->
-		<li><a href="${path1 }/member/login.do">로그인</a></li>
+	<img alt="" src="${path1 }/img/back01.jpg">
+	<%= request.getContextPath() %>
 	
-	</ul>
+
 </body>
 </html>

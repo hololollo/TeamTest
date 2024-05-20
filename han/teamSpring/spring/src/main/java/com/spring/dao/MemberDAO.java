@@ -5,11 +5,14 @@ import java.util.List;
 import com.spring.dto.Member;
 
 public interface MemberDAO {
-	public List<Member> getMemberList();
-	public Member getMember(String id);
-	public int maxNum();
-	public void insMember(Member member);
-	public void changePw(String pw);
-	public void changeInfo(Member member);
-	public void delMember(String id);
+    List<Member> getMemberList();
+    Member getMember(String userid);
+    int maxNum();
+    void insMember(Member member);
+    void changePw(Member member);
+    void changeInfo(Member member);
+    void delMember(String userid);
+    String loginCheck(Member member);
+    void registerMember(Member member);
+    boolean idCheck(String userid);
 }

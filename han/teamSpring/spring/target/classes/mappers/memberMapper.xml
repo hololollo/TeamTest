@@ -2,27 +2,43 @@
 <!DOCTYPE mapper PUBLIC 
 "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="member">
-	<select id="getMemberList" resultType="com.spring.dto.Member">
-		select * from member order by resdate desc
-	</select>	
-	<select id="getMember" resultType="com.spring.dto.Custom">
-		select * from member where id=#{id}
-	</select>
-	<select id="maxNum" resultType="int">
-		select count(*) from member
-	</select>
-	<insert id="insCustom">
-		insert into member values (#{id}, #{pw},#{name},#{birth}, #{email},#{tel}, #{addr}, #{postcode}, default)
-	</insert>
-	<update id="changePw">
-		update member set pw=#{pw} where id=#{id}
-	</update>
-	<update id="changeInfo">
-		update member set name=#{name},#{birth},email=#{email}, tel=#{tel}, addr=#{addr}, postcode=#{postcode}, where id=#{id}
-	</update>
-	<delete id="delCustom"> 
-		delete from member where id=#{#id}
-	</delete>
+<mapper namespace="com.spring.mapper.MemberMapper">
+
+  <select id="getMemberList" resultType="com.spring.dto.Member">
+    SELECT * FROM member
+  </select>
+
+  <select id="getMember" parameterType="string" resultType="com.spring.dto.Member">
+    SELECT * FROM member WHERE userid = #{userid}
+  </select>
+
+  <select id="maxNum" resultType="int">
+    SELECT MAX(userid) FROM member
+  </select>
+
+  <insert id="insMember" parameterType="com.spring.dto.Member">
+    INSERT INTO member (userid, password, name, year, month, day, gender, postcode, roadaddr1, roadaddr2)
+    VALUES (#{userid}, #{password}, #{name}, #{year}, #{month}, #{day}, #{gender}, #{postcode}, #{roadaddr1}, #{roadaddr2})
+  </insert>
+
+  <update id="changePw" parameterType="string">
+    UPDATE member SET password = #{password} WHERE userid = #{userid}
+  </update>
+
+  <update id="changeInfo" parameterType="com.spring.dto.Member">
+    UPDATE member SET name = #{name}, year = #{year}, month = #{month}, day = #{day}, gender = #{gender}, postcode = #{postcode}, roadaddr1 = #{roadaddr1}, roadaddr2 = #{roadaddr2} WHERE userid = #{userid}
+  </update>
+
+  <delete id="delMember" parameterType="string">
+    DELETE FROM member WHERE userid = #{userid}
+  </delete>
+
+  <select id="loginCheck" parameterType="com.spring.dto.Member" resultType="string">
+    SELECT name FROM member WHERE userid = #{userid} AND password = #{password}
+  </select>
+
+  <select id="idCheck" parameterType="string" resultType="int">
+    SELECT COUNT(*) FROM member WHERE userid = #{userid}
+  </select>
 </mapper>
 <!-- 해당 요소의 id는 중복되어서도 안되며, 메소드 이름을 의미합니다. -->

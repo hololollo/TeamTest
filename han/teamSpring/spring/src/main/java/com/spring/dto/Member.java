@@ -8,13 +8,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member {
-	private String id;  
-	private String pw; 
-	private String name;
-	private String birth;
-	private String email; 
-	private String tel;  
-	private String addr; 
-	private String postcode; 
-	private String regdate;
+    private String userid;
+    private String password;
+    private String usercfpw;
+    private String name;
+    private String year;
+    private String month;
+    private String day;
+    private String gender;
+    private String postcode;
+    private String roadaddr1;
+    private String roadaddr2;
 }

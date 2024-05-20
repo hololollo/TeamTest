@@ -2,28 +2,46 @@
 <!DOCTYPE mapper PUBLIC 
 "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="qna">
-	<select id="getQnaList" resultType="com.spring3.dto.Qna">
-		select * from qna order by resdate desc
-	</select>	
-	<select id="getCustom" resultType="com.spring3.dto.Qna">
-		select * from qna where id=#{id}
-	</select>
-	<select id="maxNum" resultType="int">
-		select count(*) from qna
-	</select>
-	<insert id="insCustom">
-		insert into custom values (#{id}, #{pw},#{name},#{email},#{tel}, #{addr}, #{postcode}, default)
-	</insert>
-	<update id="changePw">
-		update custom set pw=#{pw} where id=#{id}
-	</update>
-	<update id="changeInfo">
-		update custom set name=#{name},email=#{email}, tel=#{tel}, addr=#{addr}, postcode=#{postcode}, where id=#{id}
-	</update>
-	<delete id="delCustom"> 
-		delete from custom where id=#{#id}
-	</delete>
+<mapper namespace="com.spring.mapper.QnaMapper">
+
+  <select id="getQnaList" resultType="com.spring.dto.Qna">
+    SELECT * FROM qna ORDER BY parno DESC, plevel ASC
+  </select>
+<!-- 
+  <select id="getRecentQnaList" resultType="com.spring.dto.Qna">
+    SELECT * FROM (
+        SELECT q.*, ROWNUM AS rnum 
+        FROM qna q
+        WHERE ROWNUM <= 5
+        ORDER BY q.parno DESC, q.plevel ASC
+    )
+    WHERE rnum <= 5
+  </select>
+ -->
+ 
+  <select id="getQna" parameterType="int" resultType="com.spring.dto.Qna"> 
+    SELECT * FROM qna WHERE no = #{no} 
+  </select>
+
+  <insert id="insertQna" parameterType="com.spring.dto.Qna">
+    INSERT INTO qna (no, plevel, parno, title, content, resdate, visited, aid)
+    VALUES (qseq.NEXTVAL, #{plevel}, #{parno}, #{title}, #{content}, DEFAULT, #{visited}, #{aid})
+  </insert>
+
+  <update id="updateParnoForQna" parameterType="int">
+    UPDATE qna SET parno = #{no} WHERE no = #{no}
+  </update>
+
+  <update id="updateQna" parameterType="com.spring.dto.Qna">
+    UPDATE qna
+    SET title = #{title}, content = #{content}, aid = #{aid}
+    WHERE no = #{no}
+  </update>
+
+  <delete id="deleteQna" parameterType="int">
+    DELETE FROM qna WHERE no = #{no}
+  </delete>
+
 </mapper>
 
 <!-- 해당 요소의 id는 중복되어서도 안되며, 메소드 이름을 의미합니다. -->

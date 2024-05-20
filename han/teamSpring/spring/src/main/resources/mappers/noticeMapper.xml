@@ -2,24 +2,28 @@
 <!DOCTYPE mapper PUBLIC 
 "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="notice">
-	<select id="getNoticeList" resultType="com.spring.dto.notice">
-		select * from notice order by resdate desc
-	</select>	
-	<select id="getNotice" resultType="com.spring.dto.notice">
-		select * from notice where bno=#{bno}
-	</select>
-	<select id="maxNum" resultType="int">
-		select bno from (select * from notice order by bno desc) where rownum=1
-	</select>
-	<insert id="insNotice">
-		insert into notice values (#{bno}, #{title}, #{content}, #{author}, 
-		default, default)
-	</insert>
-	<update id="upNotice">
-		update notice set title=#{title}, content=#{content} where bno=#{bno}
-	</update>
-	<delete id="delNotice">
-		delete from notice where bno=#{bno}
-	</delete>
+<mapper namespace="com.spring.mapper.NoticeMapper">
+	 <select id="getNoticeList" resultType="com.spring.dto.Notice">
+    SELECT * FROM notice
+  </select>
+
+  <select id="getNotice" parameterType="int" resultType="com.spring.dto.Notice">
+    SELECT * FROM notice WHERE bno = #{bno}
+  </select>
+
+  <insert id="insertNotice" parameterType="com.spring.dto.Notice">
+    INSERT INTO notice (title, content, author, vcnt, resdate)
+    VALUES (#{title}, #{content}, #{author}, #{vcnt}, #{resdate})
+  </insert>
+
+  <update id="updateNotice" parameterType="com.spring.dto.Notice">
+    UPDATE notice
+    SET title = #{title}, content = #{content}, author = #{author}
+    WHERE bno = #{bno}
+  </update>
+
+  <delete id="deleteNotice" parameterType="int">
+    DELETE FROM notice WHERE bno = #{bno}
+  </delete>
+
 </mapper>

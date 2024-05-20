@@ -11,7 +11,7 @@
 </head>
 <body>
     <h2>Insert Answer</h2>
-    <form action="${pageContext.request.contextPath}/qna/insertAnswer" method="post">
+    <form action="${pageContext.request.contextPath}/qna/insertAnswerproQna.do" method="post">
         <input type="hidden" name="parno" value="${qna.parno}">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" required><br>

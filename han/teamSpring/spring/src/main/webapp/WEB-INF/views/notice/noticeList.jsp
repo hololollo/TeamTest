@@ -23,17 +23,17 @@
         <c:forEach var="notice" items="${noticeList}">
             <tr>
                 <td>${notice.bno}</td>
-                <td><a href="${pageContext.request.contextPath}/notice/get?bno=${notice.bno}">${notice.title}</a></td>
+                <td><a href="${pageContext.request.contextPath}/notice/getNotice.do?bno=${notice.bno}">${notice.title}</a></td>
                 <td>${notice.author}</td>
                 <td>${notice.vcnt}</td>
                 <td>${notice.resdate}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/notice/edit?bno=${notice.bno}">Edit</a>
-                    <a href="${pageContext.request.contextPath}/notice/delete?bno=${notice.bno}">Delete</a>
+                    <a href="${pageContext.request.contextPath}/notice/editNotice.do?bno=${notice.bno}">Edit</a>
+                    <a href="${pageContext.request.contextPath}/notice/deleteNotice.do?bno=${notice.bno}">Delete</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/notice/insert">Insert Notice</a>
+    <a href="${pageContext.request.contextPath}/notice/insertNotice.do">Insert Notice</a>
 </body>
 </html>

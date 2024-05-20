@@ -67,7 +67,7 @@
         <div class="hd_wrap clr-fix">
             <nav id="gnb" class="clr-fix">
                 <ul class="menu clr-fix">
-                    <li><a class="dp1" href="${hpath}/WEB-INF/views/home.jsp"><img class="banner clr-fix" src="https://placehold.it/100x100/333/" alt="배너"></a></li>
+                    <li><a class="dp1" href="/"><img class="banner clr-fix" src="https://placehold.it/100x100/333/" alt="배너"></a></li>
                     <li class="item1">
                         <a href="" class="dp1">사이트소개</a>
                         <ul class="sub">
@@ -81,11 +81,11 @@
                     <li class="item2">
                         <a href="" class="dp1">관광명소</a>
                         <ul class="sub">
-                            <li><a href="" class="dp2">서브01</a></li>
-                            <li><a href="" class="dp2">서브02</a></li>
-                            <li><a href="" class="dp2">서브03</a></li>
-                            <li><a href="" class="dp2">서브04</a></li>
-                            <li><a href="" class="dp2">서브05</a></li>
+                            <li><a href="${hpath}/tour/tour.do" class="dp2">속초 관광 명소</a></li>
+                            <li><a href="${hpath}/tour/toursub.do" class="dp2">속초 8경</a></li>
+                            <li><a href="${hpath}/tour/toursub.do" class="dp2">속초 축제</a></li>
+                            <li><a href="${hpath}/tour/toursub.do" class="dp2">속초 산림</a></li>
+                            <li><a href="${hpath}/tour/toursub.do" class="dp2">속초 해변</a></li>
                         </ul>
                     </li>
                     <li class="item3">
@@ -111,8 +111,8 @@
                     <li class="item4">
                         <a href="" class="dp1">참여공간</a>
                         <ul class="sub">
-                            <li><a href="${hpath}/notice/noticeList.jsp" class="dp2">공지사항</a></li>
-                            <li><a href="${hpath}/qna/qnaList.jsp" class="dp2">qna</a></li>
+                            <li><a href="${hpath}/notice/noticeList.do" class="dp2">공지사항</a></li>
+                            <li><a href="${hpath}/qna/qnaList.do" class="dp2">묻고 답하기</a></li>
                             <li><a href="" class="dp2">서브03</a></li>
                             <li><a href="" class="dp2">서브04</a></li>
                             <li><a href="" class="dp2">서브05</a></li>
@@ -148,11 +148,11 @@
                     <li id="dp1li" class="item2">
                         <a href="" class="dp1">관광명소</a>
                         <ul class="sub">
-                            <li><a href="" class="dp2">서브01</a></li>
-                            <li><a href="" class="dp2">서브02</a></li>
-                            <li><a href="" class="dp2">서브03</a></li>
-                            <li><a href="" class="dp2">서브04</a></li>
-                            <li><a href="" class="dp2">서브05</a></li>
+                            <li><a href="${hpath}/tour/tour.do" class="dp2">속초 관광 명소</a></li>
+                            <li><a href="${hpath}/tour/toursub.do" class="dp2">속초 8경</a></li>
+                            <li><a href="${hpath}/tour/toursub.do" class="dp2">속초 축제</a></li>
+                            <li><a href="${hpath}/tour/toursub.do" class="dp2">속초 산림</a></li>
+                            <li><a href="${hpath}/tour/toursub.do" class="dp2">속초 해변</a></li>
                         </ul>
                     </li>
                     <li id="dp1li" class="item3">
@@ -178,8 +178,8 @@
                     <li id="dp1li" class="item4">
                         <a href="" class="dp1">참여공간</a>
                         <ul class="sub">
-                            <li><a href="" class="dp2">서브01</a></li>
-                            <li><a href="" class="dp2">서브02</a></li>
+                      		<li><a href="${hpath}/notice/noticeList.jsp" class="dp2">공지사항</a></li>
+                            <li><a href="${hpath}/qna/qnaList.jsp" class="dp2">묻고 답하기</a></li>
                             <li><a href="" class="dp2">서브03</a></li>
                             <li><a href="" class="dp2">서브04</a></li>
                             <li><a href="" class="dp2">서브05</a></li>

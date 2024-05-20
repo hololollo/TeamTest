@@ -45,8 +45,8 @@
             <td>${qna.aid}</td>
         </tr>
     </table>
-    <a href="${pageContext.request.contextPath}/qna/edit?no=${qna.no}">Edit</a>
-    <a href="${pageContext.request.contextPath}/qna/delete?no=${qna.no}">Delete</a>
-    <a href="${pageContext.request.contextPath}/qna/list">Back to List</a>
+    <a href="${pageContext.request.contextPath}/qna/editQna.do?no=${qna.no}">Edit</a>
+    <a href="${pageContext.request.contextPath}/qna/deleteQna.do?no=${qna.no}">Delete</a>
+    <a href="${pageContext.request.contextPath}/qna/qnalist.do">Back to List</a>
 </body>
 </html>

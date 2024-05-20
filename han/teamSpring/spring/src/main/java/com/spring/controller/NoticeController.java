@@ -20,46 +20,46 @@ public class NoticeController {
     @Autowired
     private NoticeService noticeService;
 
-    @GetMapping("noticelist")
+    @GetMapping("noticelist.do")
     public String getNoticeList(Model model) {
         List<Notice> noticeList = noticeService.getNoticeList();
         model.addAttribute("noticeList", noticeList);
         return "notice/noticeList";
     }
 
-    @GetMapping("get")
+    @GetMapping("getNOtice.do")
     public String getNotice(@RequestParam("bno") int bno, Model model) {
         Notice notice = noticeService.getNotice(bno);
         model.addAttribute("notice", notice);
         return "notice/getNotice";
     }
 
-    @GetMapping("insert")
+    @GetMapping("insertNotice.do")
     public String insertNoticeForm(Model model) {
         model.addAttribute("notice", new Notice());
         return "notice/insNotice";
     }
 
-    @PostMapping("insert")
+    @PostMapping("insertproNotice.do")
     public String insertNotice(Notice notice, Model model) {
         noticeService.insertNotice(notice);
         return "redirect:list";
     }
 
-    @GetMapping("editNotice")
+    @GetMapping("editNotice.do")
     public String editNoticeForm(@RequestParam("bno") int bno, Model model) {
         Notice notice = noticeService.getNotice(bno);
         model.addAttribute("notice", notice);
         return "notice/editNotice";
     }
 
-    @PostMapping("edit")
+    @PostMapping("editproNotice.do")
     public String editNotice(Notice notice, Model model) {
         noticeService.updateNotice(notice);
         return "redirect:get?bno=" + notice.getBno();
     }
 
-    @GetMapping("delete")
+    @GetMapping("deleteNotice.do")
     public String deleteNotice(@RequestParam("bno") int bno) {
         noticeService.deleteNotice(bno);
         return "redirect:list";

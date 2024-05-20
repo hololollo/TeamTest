@@ -23,18 +23,18 @@
         <c:forEach var="qna" items="${qnaList}">
             <tr>
                 <td>${qna.no}</td>
-                <td><a href="${pageContext.request.contextPath}/qna/get?no=${qna.no}">${qna.title}</a></td>
+                <td><a href="${path}/qna/getQna.do?no=${qna.no}">${qna.title}</a></td>
                 <td>${qna.aid}</td>
                 <td>${qna.visited}</td>
                 <td>${qna.resdate}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/qna/edit?no=${qna.no}">Edit</a>
-                    <a href="${pageContext.request.contextPath}/qna/delete?no=${qna.no}">Delete</a>
-                    <a href="${pageContext.request.contextPath}/qna/insertAnswer?parno=${qna.parno}">Answer</a>
+                    <a href="${path}/qna/editQna.do?no=${qna.no}">Edit</a>
+                    <a href="${path}/qna/deleteQna.do?no=${qna.no}">Delete</a>
+                    <a href="${path}/qna/insertAnswerQna.do?parno=${qna.parno}">Answer</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/qna/insert">Insert Qna</a>
+    <a href="${path}/qna/insertQna.do">Insert Qna</a>
 </body>
 </html>

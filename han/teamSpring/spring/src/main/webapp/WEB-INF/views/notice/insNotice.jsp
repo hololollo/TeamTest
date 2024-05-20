@@ -11,7 +11,7 @@
 </head>
 <body>
     <h2>Insert Notice</h2>
-    <form action="${pageContext.request.contextPath}/notice/insert" method="post">
+    <form action="${pageContext.request.contextPath}/notice/insertproNotice.do" method="post">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" required><br>
         <label for="content">Content:</label>

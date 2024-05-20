@@ -37,8 +37,8 @@
             <td>${notice.resdate}</td>
         </tr>
     </table>
-    <a href="${pageContext.request.contextPath}/notice/edit?bno=${notice.bno}">Edit</a>
-    <a href="${pageContext.request.contextPath}/notice/delete?bno=${notice.bno}">Delete</a>
-    <a href="${pageContext.request.contextPath}/notice/list">Back to List</a>
+    <a href="${pageContext.request.contextPath}/notice/editNotice.do?bno=${notice.bno}">Edit</a>
+    <a href="${pageContext.request.contextPath}/notice/deleteNotice.do?bno=${notice.bno}">Delete</a>
+    <a href="${pageContext.request.contextPath}/notice/noticelist.do">Back to List</a>
 </body>
 </html>

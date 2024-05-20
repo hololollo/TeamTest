@@ -21,21 +21,21 @@ public class QnaController {
     @Inject
     QnaService qnaService;
 
-    @GetMapping("list")
+    @GetMapping("qnalist.do")
     public String getQnaList(Model model) {
         List<Qna> qnaList = qnaService.getQnaList();
         model.addAttribute("qnaList", qnaList);
         return "qna/qnaList";
     }
 
-    @GetMapping("recent")
+    @GetMapping("qnarecent.do")
     public String getRecentQnaList(Model model) {
         List<Qna> recentQnaList = qnaService.getRecentQnaList();
         model.addAttribute("recentQnaList", recentQnaList);
         return "qna/recentQnaList";
     }
 
-    @GetMapping("get")
+    @GetMapping("getQna.do")
     public String getQna(@RequestParam("no") int no, Model model) {
         qnaService.incrementVisited(no); // 방문자 수 증가
         Qna qna = qnaService.getQna(no);
@@ -43,13 +43,13 @@ public class QnaController {
         return "qna/getQna";
     }
 
-    @GetMapping("insert")
+    @GetMapping("insertQna.do")
     public String insertQnaForm(Model model) {
         model.addAttribute("qna", new Qna());
         return "qna/qIns";
     }
 
-    @PostMapping("insert")
+    @PostMapping("insertQna.do")
     public String insertQna(Qna qna, Model model) {
         qna.setPlevel(1); // 질문은 plevel이 1
         qnaService.insertQna(qna);
@@ -57,7 +57,7 @@ public class QnaController {
         return "redirect:list";
     }
 
-    @GetMapping("insertAnswer")
+    @GetMapping("insertAnswerproQna.do")
     public String insertAnswerForm(@RequestParam("parno") int parno, Model model) {
         Qna qna = new Qna();
         qna.setPlevel(2); // 답변은 plevel이 2
@@ -66,26 +66,26 @@ public class QnaController {
         return "qna/aIns";
     }
 
-    @PostMapping("insertAnswer")
+    @PostMapping("insertAnswerQna.do")
     public String insertAnswer(Qna qna, Model model) {
         qnaService.insertQna(qna);
         return "redirect:list";
     }
 
-    @GetMapping("edit")
+    @GetMapping("editQna.do")
     public String editQnaForm(@RequestParam("no") int no, Model model) {
         Qna qna = qnaService.getQna(no);
         model.addAttribute("qna", qna);
         return "qna/editQna";
     }
 
-    @PostMapping("edit")
+    @PostMapping("editproQna.do")
     public String editQna(Qna qna, Model model) {
         qnaService.updateQna(qna);
         return "redirect:get?no=" + qna.getNo();
     }
 
-    @GetMapping("delete")
+    @GetMapping("deleteQna.do")
     public String deleteQna(@RequestParam("no") int no) {
         qnaService.deleteQna(no);
         return "redirect:list";

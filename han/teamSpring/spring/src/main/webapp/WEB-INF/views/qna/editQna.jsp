@@ -11,7 +11,7 @@
 </head>
 <body>
     <h2>Edit Qna</h2>
-    <form action="${pageContext.request.contextPath}/qna/edit" method="post">
+    <form action="${pageContext.request.contextPath}/qna/editQna.do" method="post">
         <input type="hidden" name="no" value="${qna.no}">
         <label for="plevel">Plevel:</label>
         <input type="number" id="plevel" name="plevel" value="${qna.plevel}" required><br>

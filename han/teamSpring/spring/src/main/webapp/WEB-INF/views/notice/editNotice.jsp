@@ -11,7 +11,7 @@
 </head>
 <body>
     <h2>Edit Notice</h2>
-    <form action="${pageContext.request.contextPath}/notice/edit" method="post">
+    <form action="${pageContext.request.contextPath}/notice/editproNotice.do" method="post">
         <input type="hidden" name="bno" value="${notice.bno}">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" value="${notice.title}" required><br>

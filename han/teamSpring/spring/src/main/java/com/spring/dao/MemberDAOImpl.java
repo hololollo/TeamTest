@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
- 
+
 import com.spring.dto.Member;
 
 @Repository
@@ -16,52 +16,48 @@ public class MemberDAOImpl implements MemberDAO {
 
     @Override
     public List<Member> getMemberList() {
-        return sqlSession.selectList("getMemberList");
+        return sqlSession.selectList("member.getMemberList");
     }
 
     @Override
-    public Member getMember(String userid) {
-        return sqlSession.selectOne("getMember", userid);
+    public Member getMember(String id) {
+        return sqlSession.selectOne("member.getMember", id);
     }
 
     @Override
     public int maxNum() {
-        return sqlSession.selectOne("maxNum");
+        return sqlSession.selectOne("member.maxNum");
     }
 
     @Override
     public void insMember(Member member) {
-        sqlSession.insert("insMember", member);
+        sqlSession.insert("member.insMember", member);
     }
 
     @Override
     public void changePw(Member member) {
-        sqlSession.update("changePw", member);
+        sqlSession.update("member.changePw", member);
     }
 
     @Override
     public void changeInfo(Member member) {
-        sqlSession.update("changeInfo", member);
+        sqlSession.update("member.changeInfo", member);
     }
 
     @Override
-    public void delMember(String userid) {
-        sqlSession.delete("delMember", userid);
+    public void delMember(String id) {
+        sqlSession.delete("member.delMember", id);
     }
 
     @Override
     public String loginCheck(Member member) {
-        return sqlSession.selectOne("loginCheck", member);
+        return sqlSession.selectOne("member.loginCheck", member);
     }
 
-    @Override
-    public void registerMember(Member member) {
-        sqlSession.insert("registerMember", member);
-    }
 
     @Override
-    public boolean idCheck(String userid) {
-        int count = sqlSession.selectOne("idCheck", userid);
+    public boolean idCheck(String id) {
+        int count = sqlSession.selectOne("member.idCheck", id);
         return count == 0;
     }
 }

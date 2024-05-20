@@ -1,9 +1,13 @@
 package com.spring.controller;
 
-import javax.inject.Inject;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,7 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.dto.Member;
@@ -38,18 +41,31 @@ public class MemberController {
     }
 
     @PostMapping("loginPro.do")
-    public String loginPro(@RequestParam("userid") String userid, @RequestParam("password") String password, Model model, RedirectAttributes redirectAtt) {
+    public String loginPro(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model, RedirectAttributes redirectAtt,HttpSession session) {
+        // 세션 무효화
         session.invalidate();
-        Member mem = memberService.getMember(userid);
-        boolean loginSuccess = pwBCPE.matches(password, mem.getPassword());
+
+        // 사용자의 ID로 회원 정보 조회
+        Member member = memberService.getMember(id);
+
+        // 회원 정보가 없는 경우
+        if (member == null) {
+            redirectAtt.addFlashAttribute("msg", "로그인 실패: 존재하지 않는 사용자입니다.");
+            return "redirect:login.do";
+        }
+
+        // 입력된 비밀번호와 저장된 비밀번호 비교
+        boolean loginSuccess = pwBCPE.matches(pw, member.getPw());
+
+        // 로그인 성공 시
         if (loginSuccess) {
-            session.setAttribute("mem", mem);
-            session.setAttribute("sid", userid);
-            session.setAttribute("spw", password);
+            session.setAttribute("member", member);
+            session.setAttribute("sid", id);
             model.addAttribute("msg", "로그인 성공");
-            return "redirect:/"; // 로그인 성공 시 home.jsp로 이동
+            return "redirect:/"; // 로그인 성공 시 홈으로 리다이렉트
         } else {
-            redirectAtt.addAttribute("msg", "로그인 실패");
+            // 로그인 실패 시
+            redirectAtt.addFlashAttribute("msg", "로그인 실패: 비밀번호가 일치하지 않습니다.");
             return "redirect:login.do";
         }
     }
@@ -63,16 +79,15 @@ public class MemberController {
     @PostMapping("joinPro.do")
     public String joinPro(HttpServletRequest request, Model model, RedirectAttributes rttr) {
         Member mem = new Member();
-        mem.setUserid(request.getParameter("userid"));
-        mem.setPassword(pwBCPE.encode(request.getParameter("password")));
+        mem.setId(request.getParameter("id"));
+        mem.setPw(pwBCPE.encode(request.getParameter("pw")));
         mem.setName(request.getParameter("name"));
-        mem.setYear(request.getParameter("year"));
-        mem.setMonth(request.getParameter("month"));
-        mem.setDay(request.getParameter("day"));
+        String birth = request.getParameter("year") + "-" + request.getParameter("month") + "-" + request.getParameter("day");
+        mem.setBirth(birth);
         mem.setGender(request.getParameter("gender"));
         mem.setPostcode(request.getParameter("postcode"));
-        mem.setRoadaddr1(request.getParameter("roadaddr1")); 
-        mem.setRoadaddr2(request.getParameter("roadaddr2"));
+        String addr = request.getParameter("addr1") + " " + request.getParameter("addr2");
+        mem.setAddr(addr);
         memberService.insMember(mem);
         model.addAttribute("msg", "회원가입이 완료되었습니다. 다시 로그인 해주세요.");
         return "redirect:/";
@@ -82,13 +97,22 @@ public class MemberController {
     public String agreeForm() {
         return "member/agree";
     }
-
-    @PostMapping("idCheck.do")
-    @ResponseBody
-    public String idCheck(@RequestParam("id") String id) {
-        boolean result = memberService.idCheck(id);
-        return "{\"result\": " + result + "}";
-    } 
+ 
+	@PostMapping("idCheck.do")
+	public void idCheck(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+		String id = request.getParameter("id");
+		Member member = memberService.getMember(id);
+		boolean result;
+		if(member!=null) {
+			result = false;
+		} else {
+			result = true;
+		}
+		JSONObject json = new JSONObject();
+		json.put("result", result);
+		PrintWriter out = response.getWriter();
+		out.println(json.toString());
+	}
 
     @RequestMapping("logout.do")
     public String logout(HttpSession session, Model model) {

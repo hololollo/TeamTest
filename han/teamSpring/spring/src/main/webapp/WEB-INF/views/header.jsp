@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>header</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <!--   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script type="text/javascript" src="http://dmaps.daum.net/map_js_init/v3.js"></script>
     <style>
@@ -67,7 +67,7 @@
         <div class="hd_wrap clr-fix">
             <nav id="gnb" class="clr-fix">
                 <ul class="menu clr-fix">
-                    <li><a class="dp1" href=""><img class="banner clr-fix" src="https://placehold.it/100x100/333/" alt="배너"></a></li>
+                    <li><a class="dp1" href="${hpath}/WEB-INF/views/home.jsp"><img class="banner clr-fix" src="https://placehold.it/100x100/333/" alt="배너"></a></li>
                     <li class="item1">
                         <a href="" class="dp1">사이트소개</a>
                         <ul class="sub">

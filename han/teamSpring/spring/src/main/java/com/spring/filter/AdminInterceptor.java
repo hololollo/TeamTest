@@ -13,12 +13,12 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
-        Member mem = (Member) session.getAttribute("mem");
-        if(session.getAttribute("mem")==null) { //로그인을 하지 않은 경우
-            response.sendRedirect(request.getContextPath()+"/custom/login.do");
+        Member member = (Member) session.getAttribute("member");
+        if(session.getAttribute("memer")==null) { //로그인을 하지 않은 경우
+            response.sendRedirect(request.getContextPath()+"/member/login.do");
             return false;
         }
-        if(mem.getUserid().equals("admin")){ //관리자(admin) 계정인 경우 (/admin/**) 접근 가능
+        if(member.getId().equals("admin")){ //관리자(admin) 계정인 경우 (/admin/**) 접근 가능
             return true;
         } else { //관리자(admin) 계정이 아닌 경우
         	

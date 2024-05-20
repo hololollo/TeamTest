@@ -1,12 +1,13 @@
 package com.spring.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.spring.dao.MemberDAO;
 import com.spring.dto.Member;
+
+import java.util.List;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -14,14 +15,17 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberDAO memberDAO;
 
+    @Autowired
+    private BCryptPasswordEncoder pwBCPE;
+
     @Override
     public List<Member> getMemberList() {
         return memberDAO.getMemberList();
     }
 
     @Override
-    public Member getMember(String userid) {
-        return memberDAO.getMember(userid);
+    public Member getMember(String id) {
+        return memberDAO.getMember(id);
     }
 
     @Override
@@ -31,11 +35,13 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void insMember(Member member) {
+        member.setPw(pwBCPE.encode(member.getPw()));
         memberDAO.insMember(member);
     }
 
     @Override
     public void changePw(Member member) {
+        member.setPw(pwBCPE.encode(member.getPw()));
         memberDAO.changePw(member);
     }
 
@@ -45,8 +51,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void delMember(String userid) {
-        memberDAO.delMember(userid);
+    public void delMember(String id) {
+        memberDAO.delMember(id);
     }
 
     @Override
@@ -54,13 +60,11 @@ public class MemberServiceImpl implements MemberService {
         return memberDAO.loginCheck(member);
     }
 
-    @Override
-    public void registerMember(Member member) {
-        memberDAO.registerMember(member);
-    }
 
     @Override
-    public boolean idCheck(String userid) {
-        return memberDAO.idCheck(userid);
+    public boolean idCheck(String id) {
+        return memberDAO.idCheck(id);
     }
+    
+
 }

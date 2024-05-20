@@ -31,10 +31,10 @@
     <header></header>
     <div class="join_contents">
         <div class="join_wrap">
-            <form name="joinform" id="joinform" action="${path1}/member/register.do" method="post" onsubmit="return joinCheck(this)">
+            <form name="joinform" id="joinform" action="${path}/member/joinPro.do" method="post" onsubmit="return joinCheck(this)">
                 <div class="input id">
                     <h3>아이디</h3>
-                    <input type="text" id="userid" name="userid" class="id" placeholder="아이디" pattern="^[a-z0-9]{5,12}" maxlength="12" required>
+                    <input type="text" id="id" name="id" class="id" placeholder="아이디" pattern="^[a-z0-9]{5,12}" maxlength="12" required>
                     <input type="button" id="idbtn" class="button" onclick="idCheck()" value="아이디 중복확인">
                     <input type="hidden" name="idck" id="idck" value="no">
                     <c:if test="${empty qid}">
@@ -46,11 +46,11 @@
                 </div>
                 <div class="input cfpw">
                     <h3>비밀번호</h3>
-                    <input type="password" id="pw" name="password" class="pw" placeholder="비밀번호" required>
+                    <input type="password" id="pw" name="pw" class="pw" placeholder="비밀번호" required>
                 </div>
                 <div class="input cfpw">
                     <h3>비밀번호확인</h3>
-                    <input type="password" id="usercfpw" name="usercfpw" class="usecfpw" placeholder="비밀번호확인" required>
+                    <input type="password" id="usercfpw" name="usercfpw" class="usercfpw" placeholder="비밀번호확인" required>
                 </div>
                 <div class="input name">
                     <h3>이름</h3>
@@ -58,33 +58,33 @@
                 </div>
                 <div class="input birth">
                     <h3>생년월일</h3>
-                    <input type="text" id="year" name="year" class="year" placeholder="년(4자)">
-                    <select class="usermonth" name="month">
-                        <option value="선택">월</option>
-                        <option value="1월">1월</option>
-                        <option value="2월">2월</option>
-                        <option value="3월">3월</option>
-                        <option value="4월">4월</option>
-                        <option value="5월">5월</option>
-                        <option value="6월">6월</option>
-                        <option value="7월">7월</option>
-                        <option value="8월">8월</option>
-                        <option value="9월">9월</option>
-                        <option value="10월">10월</option>
-                        <option value="11월">11월</option>
-                        <option value="12월">12월</option>
+                    <input type="text" id="year" name="year" class="year" placeholder="년(4자)" required>
+                    <select class="usermonth" id="month" name="month" required>
+                        <option value="">월</option>
+                        <option value="01">1월</option>
+                        <option value="02">2월</option>
+                        <option value="03">3월</option>
+                        <option value="04">4월</option>
+                        <option value="05">5월</option>
+                        <option value="06">6월</option>
+                        <option value="07">7월</option>
+                        <option value="08">8월</option>
+                        <option value="09">9월</option>
+                        <option value="10">10월</option>
+                        <option value="11">11월</option>
+                        <option value="12">12월</option>
                     </select>
-                    <select class="userday" name="day">
-                        <option value="1">일</option>
-                        <option value="1">1일</option>
-                        <option value="2">2일</option>
-                        <option value="3">3일</option>
-                        <option value="4">4일</option>
-                        <option value="5">5일</option>
-                        <option value="6">6일</option>
-                        <option value="7">7일</option>
-                        <option value="8">8일</option>
-                        <option value="9">9일</option>
+                    <select class="userday" id="day" name="day" required>
+                        <option value="">일</option>
+                        <option value="01">1일</option>
+                        <option value="02">2일</option>
+                        <option value="03">3일</option>
+                        <option value="04">4일</option>
+                        <option value="05">5일</option>
+                        <option value="06">6일</option>
+                        <option value="07">7일</option>
+                        <option value="08">8일</option>
+                        <option value="09">9일</option>
                         <option value="10">10일</option>
                         <option value="11">11일</option>
                         <option value="12">12일</option>
@@ -111,18 +111,17 @@
                 </div>
                 <div class="input gender">
                     <h3>성별</h3>
-                    <select class="usergender" id="gender-list" name="gender">
-                        <option value="선택">선택하세요</option>
+                    <select class="usergender" id="gender" name="gender" required>
+                        <option value="">선택하세요</option>
                         <option value="남">남</option>
                         <option value="여">여</option>
                     </select>
                 </div>
                 <div class="input addr">
                     <h3>자택주소</h3>
-                    <input type="text" id="postcode" name="postcode" class="postcode" placeholder="우편번호" readonly>
+                    <input type="text" id="postcode" name="postcode" class="postcode" placeholder="우편번호" readonly required>
                     <input type="button" id="pcodebtn" class="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-                    <input type="text" id="roadaddr1" name="roadaddr1" class="roadaddr1" placeholder="도로명주소" readonly>
-                    <input type="text" id="roadaddr2" name="roadaddr2" class="roadaddr2" placeholder="이하 주소입력">
+                    <input type="text" id="addr" name="addr" class="addr" placeholder="주소" readonly required>
                 </div>
                 <input type="submit" class="submit success button" value="회원 가입">
                 <input type="reset" class="reset button" value="취소">
@@ -152,25 +151,23 @@
                             extraAddr = ' (' + extraAddr + ')';
                         }
                     } else {
-                        document.getElementById("UserAdd1").value = '';
+                        document.getElementById("addr").value = '';
                     }
                     document.getElementById('postcode').value = data.zonecode;
-                    document.getElementById("roadaddr1").value = addr;
-                    document.getElementById("roadaddr1").value += extraAddr;
-                    document.getElementById("roadaddr2").focus();
+                    document.getElementById("addr").value = addr + extraAddr;
                 }
             }).open();
         }
 
         function idCheck() {
-            if ($("#userid").val() == "") {
+            if ($("#id").val() == "") {
                 alert("아이디를 입력하지 않으셨습니다.");
-                $("#userid").focus();
+                $("#id").focus();
                 return;
             }
-            var params = { id: $("#userid").val() }
+            var params = { id: $("#id").val() }
             $.ajax({
-                url: "${path1}/member/idCheck.do",
+                url: "${path}/member/idCheck.do",
                 type: "post",
                 dataType: "json",
                 data: params,
@@ -180,7 +177,7 @@
                     if (idChk == false) {
                         $("#idck").val("no");
                         $("#msg").html("<strong style='color:red'>기존에 사용되고 있는 아이디 입니다. 다시 입력하시기 바랍니다.</strong>");
-                        $("#userid").focus();
+                        $("#id").focus();
                     } else if (idChk == true) {
                         $("#idck").val("yes");
                         $("#msg").html("<strong style='color:blue'>사용가능한 아이디 입니다.</strong>");
@@ -194,7 +191,7 @@
         function joinCheck(form) {
             if ($("#idck").val() == "no") {
                 alert("아이디 중복 체크를 해주세요.");
-                $("#userid").focus();
+                $("#id").focus();
                 return false;
             }
             if ($("#pw").val() != $("#usercfpw").val()) {

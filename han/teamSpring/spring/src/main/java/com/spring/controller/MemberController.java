@@ -41,10 +41,7 @@ public class MemberController {
     }
 
     @PostMapping("loginPro.do")
-    public String loginPro(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model, RedirectAttributes redirectAtt,HttpSession session) {
-        // 세션 무효화
-        session.invalidate();
-
+    public String loginPro(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model, RedirectAttributes redirectAtt) {
         // 사용자의 ID로 회원 정보 조회
         Member member = memberService.getMember(id);
 
@@ -56,13 +53,16 @@ public class MemberController {
 
         // 입력된 비밀번호와 저장된 비밀번호 비교
         boolean loginSuccess = pwBCPE.matches(pw, member.getPw());
+        System.out.println("로그인 시도 - 입력된 ID: " + id + ", 입력된 PW: " + pw + ", 저장된 PW: " + member.getPw() + ", 비교 결과: " + loginSuccess);
 
         // 로그인 성공 시
         if (loginSuccess) {
+            // 세션 설정
             session.setAttribute("member", member);
-            session.setAttribute("sid", id);
+            session.setAttribute("id", id);
+            System.out.println("로그인 성공: " + id); // 로그 추가
             model.addAttribute("msg", "로그인 성공");
-            return "redirect:/"; // 로그인 성공 시 홈으로 리다이렉트
+            return "redirect:/home.jsp"; // 로그인 성공 시 홈으로 리다이렉트
         } else {
             // 로그인 실패 시
             redirectAtt.addFlashAttribute("msg", "로그인 실패: 비밀번호가 일치하지 않습니다.");
@@ -98,26 +98,63 @@ public class MemberController {
         return "member/agree";
     }
  
-	@PostMapping("idCheck.do")
-	public void idCheck(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
-		String id = request.getParameter("id");
-		Member member = memberService.getMember(id);
-		boolean result;
-		if(member!=null) {
-			result = false;
-		} else {
-			result = true;
-		}
-		JSONObject json = new JSONObject();
-		json.put("result", result);
-		PrintWriter out = response.getWriter();
-		out.println(json.toString());
-	}
+    @PostMapping("idCheck.do")
+    public void idCheck(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+        String id = request.getParameter("id");
+        Member member = memberService.getMember(id);
+        boolean result;
+        if (member != null) {
+            result = false;
+        } else {
+            result = true;
+        }
+        JSONObject json = new JSONObject();
+        json.put("result", result);
+        PrintWriter out = response.getWriter();
+        out.println(json.toString());
+    }
 
     @RequestMapping("logout.do")
     public String logout(HttpSession session, Model model) {
         session.invalidate();
         model.addAttribute("message", "로그아웃");
         return "redirect:/member/login.do";
+    }
+
+    @GetMapping("myInfo.do")
+    public String myInfo(Model model) {
+        Member member = (Member) session.getAttribute("member");
+        model.addAttribute("member", member);
+        return "member/myInfo";
+    }
+
+    @GetMapping("myUpdate.do")
+    public String myUpdate(Model model) {
+        Member member = (Member) session.getAttribute("member");
+        model.addAttribute("member", member);
+        return "member/myUpdate";
+    }
+
+    @PostMapping("myUpdatePro.do")
+    public String myUpdatePro(HttpServletRequest request, Model model, RedirectAttributes rttr) {
+        Member member = new Member();
+        member.setId(request.getParameter("id"));
+        member.setPw(pwBCPE.encode(request.getParameter("pw"))); // 비밀번호 암호화
+        member.setName(request.getParameter("name"));
+        member.setBirth(request.getParameter("birth"));
+        member.setGender(request.getParameter("gender"));
+        member.setPostcode(request.getParameter("postcode"));
+        member.setAddr(request.getParameter("addr1") + " " + request.getParameter("addr2"));
+        memberService.changeInfo(member);
+        model.addAttribute("msg", "회원 정보가 업데이트되었습니다. 다시 로그인 해주세요.");
+        session.invalidate();
+        return "redirect:/";
+    }
+
+    @GetMapping("memberDelete.do")
+    public String memberDelete(@RequestParam("id") String id, Model model) {
+        memberService.delMember(id);
+        session.invalidate();
+        return "redirect:/";
     }
 }

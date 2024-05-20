@@ -8,10 +8,20 @@
 <html>
 <head>
     <title>Insert Notice</title>
+
+<style>
+      #vs { clear:both; width: 1930px; height: 600px; overflow:hidden; position:relative; margin: 0 auto;}
+      #vs img { display:block; width: 100%;  height: 100%; position:absolute;  z-index: 0px;}
+</style>
+    
 </head>
 <body>
+<%@ include file="/WEB-INF/views/header.jsp" %> 
+    <figure id="vs">
+        <img class="backimg" src="${path}/resources/img/back01.jpg" alt="배경이미지">
+    </figure>
     <h2>Insert Notice</h2>
-    <form action="${pageContext.request.contextPath}/notice/insertproNotice.do" method="post">
+    <form action="${path}/notice/insertproNotice.do" method="post">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" required><br>
         <label for="content">Content:</label>
@@ -19,9 +29,9 @@
         <label for="author">Author:</label>
         <input type="text" id="author" name="author" required><br>
         <input type="hidden" name="vcnt" value="0">
-        <input type="hidden" name="resdate" value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) %>">
+        <!-- Removed date handling from JSP to handle it server-side -->
         <button type="submit">Submit</button>
     </form>
+    <%@ include file="/WEB-INF/views/footer.jsp" %>   
 </body>
-</html>
 </html>

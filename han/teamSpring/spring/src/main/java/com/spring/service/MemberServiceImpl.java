@@ -35,7 +35,10 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void insMember(Member member) {
-        member.setPw(pwBCPE.encode(member.getPw()));
+        String rawPassword = member.getPw();
+        String encodedPassword = pwBCPE.encode(rawPassword);
+        member.setPw(encodedPassword);
+        System.out.println("비밀번호 암호화 - 원본: " + rawPassword + ", 암호화: " + encodedPassword);
         memberDAO.insMember(member);
     }
 

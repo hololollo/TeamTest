@@ -71,7 +71,7 @@ public class MemberController {
         mem.setDay(request.getParameter("day"));
         mem.setGender(request.getParameter("gender"));
         mem.setPostcode(request.getParameter("postcode"));
-        mem.setRoadaddr1(request.getParameter("roadaddr1"));
+        mem.setRoadaddr1(request.getParameter("roadaddr1")); 
         mem.setRoadaddr2(request.getParameter("roadaddr2"));
         memberService.insMember(mem);
         model.addAttribute("msg", "회원가입이 완료되었습니다. 다시 로그인 해주세요.");

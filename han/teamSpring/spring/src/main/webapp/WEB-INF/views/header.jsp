@@ -47,20 +47,7 @@
         #gnb2 .sub {display: none;}
         #gnb2:hover .menu .sub {display: block;}
         #gnb2 .menu li:hover .sub {background-color: #ccc;}
-        #contents { width: 100%;}
-        .page { clear:both; width: 100%; height: auto; margin: 0 auto;}
-        .page:after { content:""; display:block; width:100%; clear:both; }
-        .page_title { text-align: center; padding: 1em; float: left;}
-        .page_wrap { clear:both; width: 1280px; margin: 0 auto; }
-        #page1 {width: 1280px; background-color: white; z-index: 0; height: auto;}
-        .page { clear:both; width: 100%; min-height:60vh; margin: 0 auto;}
-        .page:after { content:""; display:block; width:100%; clear:both; }
-        .page_title { text-align: center; padding: 1em; }
-        .page_wrap { clear:both; width: 1280px; margin: 0 auto; }
-        #page1 {width: 1280px; background-color: white; z-index: 0; border: 1px solid #333;}
-        #vs { clear:both; width: 1930px; height: 600px; overflow:hidden; position:relative; margin: 0 auto;}
-        #vs img { display:block; width: 100%;  height: 100%; position:absolute;  z-index: 0px;}
-        .pagepage {width: 100% ; height: 2000px; background-color: #ccc;} 
+     
     </style>
     <script>
         window.addEventListener("scroll",function(){
@@ -212,19 +199,13 @@
             </nav>
         </div>
     </header>
-    <main id="contents" class="clr-fix">
-        <figure id="vs">
-            <img class="backimg" src="https://placehold.it/1800x600/4E8AD9/" alt="배경이미지">
-        </figure>
-        <section>
-        </section>
         <div id="">
             <!-- login 할 경우 로그아웃으로 변경 -->
             <c:if test="${not empty sid}">
                 <h2 style="text-align:center;">${sname} 님 환영합니다.</h2>
             </c:if>
             <c:if test="${empty sid}">
-                <h2 style="text-align:center;">모든 서비스를 활용시 로그인 요망</h2>
+                <!-- <h2 style="text-align:center;">모든 서비스를 활용시 로그인 요망</h2> --> <!--   -->
             </c:if>
         </div>
     </main>

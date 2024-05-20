@@ -37,9 +37,7 @@
         <br>
         <hr>
         <div class="fc_wrap">
-            <a href=""><img src="${path1}/img/footer_logo.png" alt="속초속촉로고" class="logo"></a> <!-- 이미지 경로 수정 -->
-            <a href=""><img src="${path1}/img/footer_logo.png" alt="속초속촉로고" class="logo"></a> <!-- 이미지 경로 수정 -->
-            
+            <a href=""><img src="${path1}/resources/img/footer_logo.png" alt="속초속촉로고" class="logo"></a> <!-- 이미지 경로 수정 -->
             <nav class="foot_menu">
                 <ul>
                     <li><a href="">회원약관</a></li>

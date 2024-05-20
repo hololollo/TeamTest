@@ -63,22 +63,3 @@ padding:14px; }
 text-overflow: ellipsis; overflow:hidden; color:#333; }
 
 
-/* footer */
-a{font-family: "Nanum Gothic", sans-serif; font-weight:500 ;}
-p{font-family: "Nanum Gothic", sans-serif; font-size: 13px; }
-
-
-#ft{ width:100%; height: auto; background-color: #1F1E2C; }
-.fc_wrap {position: relative;  width: 1290px; height: 180px;  margin : auto;  }
-.logo{position: absolute;  top:-20px; width:200px; height: 150px; }
-
-.foot_menu {width:1000px; height:auto;   margin: 0 auto; }
-.foot_menu ul{display: flex; margin-left: 100px; margin-top: 35px; }
-.foot_menu li{padding-left: 30px;}
-.foot_menu a{color: white;}
-
-
-.copyright{width: auto; margin-top: 70px;  height: auto;}
-.copyright p{color:#fff; padding-left: 270px;}
-
-.drop{position: absolute; right: 20px; bottom: 70px;  }

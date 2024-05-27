@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+D:\hty\teamTest\han\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-4254307202.index
-85516700.index
-1105722711.index
-2018553176.index
-4118091147.index
-738534495.index

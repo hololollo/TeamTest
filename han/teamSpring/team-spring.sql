@@ -32,6 +32,7 @@ resdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 desc notice;
 drop table board;
 
+insert into notice values(default, 'title1', 'content1', 'author1', default, default);
 
 
 
@@ -42,11 +43,15 @@ title VARCHAR(255),
 content varchar(2000),
 author VARCHAR(255),
 datafile VARCHAR(255),
-resdate DATETIME,
+resdate DATETIME DEFAULT CURRENT_TIMESTAMP,
 visited INT DEFAULT 0
 );
 desc board;
 select * from board;
+
+
+
+insert into board values(default, 'title1', 'content1', 'author1', '1716770761119Frame 73.png', default, default );
 
 
 drop table qna;
@@ -65,5 +70,6 @@ aid VARCHAR(50)
 desc qna;
 select * from qna;
 
+insert into qna values(default, 1, 0, 'title1', 'content1', default, default, 'admin');
 
 commit;

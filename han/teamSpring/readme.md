@@ -1,5 +1,61 @@
 # 프로젝트 개발 보고서(Project Development Report)
 -----------------------------------------------
+## 0. 프로젝트 개발인원
+![개발인원](./gif/4팀.jpg)
+
+### 0-1. 프로젝트 시연
+
+#### 0-1-1. 메인페이지 구현
+![메인페이지](./gif/header_test.gif)
+
+#### 0-1.2. 사이트 소개 페이지
+![사이트소개](./gif/introsite.gif)
+
+#### 0-1.2. 속초시 소개 페이지
+![세부페이지](./Captures/introsockcho.mp4)
+#### 0-1.3. 개인정보처리방침 페이지
+![세부페이지](./gif/agree.gif)
+#### 0-1.4. 속초관광명소 페이지
+![세부페이지](./gif/tour1.gif)
+#### 0-1.5. 속초축제 페이지
+![세부페이지](./gif/tour2.gif)
+#### 0-1.6. 속초산림 페이지
+![세부페이지](./gif/tour3.gif)
+#### 0-1.7. 속초해변 페이지
+![세부페이지](./gif/tour4.gif)
+#### 0-1.8. 공연.예술 페이지
+![세부페이지](./gif/look1.gif)
+#### 0-1.9. 박물관 페이지
+![세부페이지](./gif/look2.gif)
+#### 0-1.10. 문화재 페이지
+![세부페이지](./gif/look3.gif)
+#### 0-1.11. 숙박/음식점 페이지
+![세부페이지](./gif/food1.gif)
+#### 0-1.12. 음식 페이지
+![세부페이지](./gif/food2.gif)
+#### 0-1.13. 숙박 페이지
+![세부페이지](./gif/food3.gif)
+#### 0-1.14. 시장 페이지
+![세부페이지](./gif/food4.gif)
+#### 0-1.15. 공지사항 페이지
+![세부페이지](./gif/noti-get.gif)
+#### 0-1.16. 공지사항 추가 페이지
+![세부페이지](./gif/noti_insert.gif)
+#### 0-1.17. 묻고 답하기 페이지
+![세부페이지](./Captures/getqna.mp4)
+#### 0-1.18. 묻고 답하기 작성 페이지
+![세부페이지](./Captures/qnawrite.mp4)
+#### 0-1.19. 답변 작성
+![세부페이지](./Captures/answer.mp4)
+#### 0-1.20. 관리자 로그인 페이지
+![세부페이지](./gif/adminlogintest.gif)
+#### 0-1.21. 마이페이지 구현
+![사이트소개](./gif/mypagetest.gif)
+
+### 0-2. 프로젝트 발표시연
+![개발인원](./gif/발표.mp4)
+
+
 ## 1. 프로젝트 개요(Project Outline)
 
 	산과 바다가 함께 위치하고있으며 많은 관광요소가 모여 있는 속초시를 소개하기 위한
@@ -52,19 +108,19 @@
 
 #### 4-1.1. 자료 수집(Data Collection And Sort) - WordCloud
 
-![워드클라우드](./wordcloud.png)
+![워드클라우드](./readme/wordcloud.png)
 
 <br>
 
 #### 4-1.2. 콘텐츠 분류(Content Cort) - Card Sorting
 
-![카드소팅](./cardsorting.png)
+![카드소팅](./readme/cardsorting.png)
 
 <br>
 
 #### 4-1-3. 서비스 흐름 설계(Service Flow Design)
 
-![유스케이스](./usecase_teamTest.png)
+![유스케이스](./readme/usecase_teamTest.png)
 
 <br>
 
@@ -100,19 +156,19 @@
 
 #### 4-2-1. 개념적 설계
 
-![개념적모델링](./ERD.png)
+![개념적모델링](./readme/ERD.png)
 
 <br>
 
 #### 4-2-2. 논리적 설계
 
-![논리적모델링](..png)
+![논리적모델링](./readme/png)
 
 <br>
 
 #### 4-2-3. 물리적 설계
 
-![물리적모델링](./physical.png)
+![물리적모델링](./readme/physical.png)
 
 <br>
 

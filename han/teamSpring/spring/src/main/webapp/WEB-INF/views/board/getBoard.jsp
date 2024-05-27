@@ -52,7 +52,7 @@
                 <th>File</th>
                 <td>
                     <c:if test="${not empty board.datafile}">
-                        <a href="${path}/board/downloadFile/${board.datafile}" download="${board.datafile}">Download</a>
+                        <a href="${path}/board/downloadFile/${board.datafile}" download="${board.datafile}">${board.datafile} Download</a>
                     </c:if>
                 </td>
             </tr>

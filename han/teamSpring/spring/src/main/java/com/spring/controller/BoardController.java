@@ -2,16 +2,15 @@ package com.spring.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -38,8 +37,11 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
     
-    @Value("#{uploadPath}")
-    private String uploadDir;
+    @Autowired
+    private ServletContext servletContext;
+    
+//    @Value("#{uploadPath}")
+//    private String uploadDir;
 
     @GetMapping("boardList.do")
     public String getBoardList(Model model, HttpSession session) {
@@ -66,11 +68,12 @@ public class BoardController {
     public String insBoard(@ModelAttribute("board") Board board, @RequestParam("file") MultipartFile datafile, RedirectAttributes ra) {
         if (!datafile.isEmpty()) { 
             try {
+            	String uploadFolder = servletContext.getRealPath("/resources/upload");
             	// 파일 이름 생성 및 저장 경로 설정
                 String filename = System.currentTimeMillis() + datafile.getOriginalFilename();
-                String savePath = uploadDir + filename;
+                String savePath = uploadFolder + filename;
                 //파일 디렉토리 화인 및 생성
-                File dir = new File(uploadDir);
+                File dir = new File(uploadFolder);
                 if (!dir.exists()) {
                     dir.mkdirs(); // 경로에 폴더가 없으면 만들어라.
                 }
@@ -98,9 +101,10 @@ public class BoardController {
     public String editBoard(@ModelAttribute("board") Board board, @RequestParam("datafile") MultipartFile datafile, RedirectAttributes redirectAttributes) {
         if (!datafile.isEmpty()) {
             try {
+            	String uploadFolder = servletContext.getRealPath("/resources/upload");
                 String filename = System.currentTimeMillis() + datafile.getOriginalFilename();
-                String savePath = uploadDir + filename;
-                File dir = new File(uploadDir);
+                String savePath = uploadFolder + filename;
+                File dir = new File(uploadFolder);
                 if (!dir.exists()) {
                     dir.mkdirs();
                 }
@@ -125,7 +129,8 @@ public class BoardController {
     
     @GetMapping("/downloadFile/{filename:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String filename, HttpServletRequest request) throws IOException {
-        Path filePath = Paths.get(uploadDir + filename);
+    	String uploadFolder = servletContext.getRealPath("/resources/upload");
+        Path filePath = Paths.get(uploadFolder + filename);
         Resource resource = new UrlResource(filePath.toUri());
         if (!resource.exists() || !resource.isReadable()) {
             throw new RuntimeException("Could not read file: " + filename);

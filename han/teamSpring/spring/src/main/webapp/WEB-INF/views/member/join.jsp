@@ -79,7 +79,7 @@
                     <input type="text" id="useremail1" name="useremail1" class="useremail1" placeholder="이메일" required>
                     <span>@</span>
                     <input type="text" id="useremail2" name="useremail2" class="useremail2" placeholder="직접입력" required>
-                    <select class="emailbox" id="emailbox">
+                    <select class="emailbox" id="emailbox" name="emailbox">
                         <option value="self">직접 입력</option> 
                         <option value="naver.com">naver.com</option>
                         <option value="google.com">google.com</option>

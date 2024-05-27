@@ -10,4 +10,5 @@ public interface NoticeService {
     public void insertNotice(Notice notice);
     public void updateNotice(Notice notice);
     public void deleteNotice(int bno);
+    public void countUpCnt(int bno);
 }

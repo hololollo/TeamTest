@@ -34,29 +34,29 @@
                     <div class="tourpagecard">
                         <div class="tourpagecontent">
                             <h2 class="tourpagetitle">속초 산림</h2>
-                            <p class="tourpagecopy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p>
-                            <button class="tourpagebtn">산림 더보기</button>
+                            <p class="tourpagecopy">속초 산림입니다.</p>
+                            <button class="tourpagebtn"><a href="${path}/tour/toursub3_1.do">산림 더보기</a></button>
                         </div>
                     </div>
                     <div class="tourpagecard">
                         <div class="tourpagecontent">
                             <h2 class="tourpagetitle">속초 해변가</h2>
-                            <p class="tourpagecopy">Plan your next beach trip with these fabulous destinations</p>
-                            <button class="tourpagebtn">해양 더보기</button>
+                            <p class="tourpagecopy">속초 해변가입니다</p>
+                            <button class="tourpagebtn"><a href="${path}/tour/toursub2_1.do">해양 더보기</a></button>
                         </div>
                     </div>
                     <div class="tourpagecard">
                         <div class="tourpagecontent">
                             <h2 class="tourpagetitle">속초 놀거리</h2>
-                            <p class="tourpagecopy">It's the desert you've always dreamed of asdfasdfasdfasdf</p>
-                            <button class="tourpagebtn">놀거리 더보기</button>
+                            <p class="tourpagecopy">속초 놀거리입니다.</p>
+                            <button class="tourpagebtn"><a href="${path}/tour/toursub1_1.do">놀거리 더보기</a></button>
                         </div>
                     </div>
                     <div class="tourpagecard">
                         <div class="tourpagecontent">
                             <h2 class="tourpagetitle">속초 볼거리</h2>
-                            <p class="tourpagecopy">Seriously, straight up, just blast off into outer space today</p>
-                            <button class="tourpagebtn">볼거리 더보기</button>
+                            <p class="tourpagecopy">속초볼거리입니다.</p>
+                            <button class="tourpagebtn"><a href="${path}/tour/toursub1_1.do">볼거리 더보기</a></button>
                         </div>
                     </div>
                 </main>

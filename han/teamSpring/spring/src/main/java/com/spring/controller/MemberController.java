@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,111 +25,206 @@ import com.spring.service.MemberService;
 @RequestMapping("/member/")
 public class MemberController {
 
-    @Autowired
+	@Autowired
     private MemberService memberService;
 
     @Autowired
     private HttpSession session;
-
-    @Autowired
-    private BCryptPasswordEncoder pwBCPE;
 
     @GetMapping("login.do")
     public String login(Model model) {
         return "member/login";
     }
 
+//    @PostMapping("loginPro.do")
+//    public String loginPro(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model, RedirectAttributes rttr, HttpServletRequest request) {
+//        Member member = memberService.getMember(id);
+//
+//        if (member == null) {
+//            rttr.addFlashAttribute("msg", "존재하지 않는 아이디입니다.");
+//            System.out.println("회원 정보를 찾을 수 없습니다.");
+//            return "redirect:login.do";
+//        }
+//
+//        // 로그인 시도 로그 추가
+//        System.out.println("로그인 시도 - 입력된 비밀번호: " + pw);
+//        System.out.println("로그인 시도 - 데이터베이스의 암호화된 비밀번호: " + member.getPw());
+//
+//        boolean loginSuccess = memberService.checkPassword(pw, member.getPw());
+//        System.out.println("비밀번호 비교 결과: " + loginSuccess);
+//
+//        if (loginSuccess) {
+//            HttpSession session = request.getSession(false);
+//            if (session != null) {
+//                session.invalidate();
+//            }
+//            session = request.getSession(true);
+//            session.setAttribute("member", member);
+//            session.setAttribute("sid", id);
+//            model.addAttribute("msg", "로그인 성공");
+//            return "redirect:/";
+//        } else {
+//            rttr.addFlashAttribute("msg", "로그인 실패: 비밀번호가 일치하지 않습니다.");
+//            return "redirect:login.do";
+//        }
+//    }
     @PostMapping("loginPro.do")
-    public String loginPro(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model, RedirectAttributes redirectAtt) {
-        // 사용자의 ID로 회원 정보 조회
+    public String loginPro(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model, RedirectAttributes rttr, HttpServletRequest request) {
         Member member = memberService.getMember(id);
 
-        // 회원 정보가 없는 경우
         if (member == null) {
-            redirectAtt.addFlashAttribute("msg", "로그인 실패: 존재하지 않는 사용자입니다.");
+            rttr.addFlashAttribute("msg", "존재하지 않는 아이디입니다.");
+            System.out.println("회원 정보를 찾을 수 없습니다.");
             return "redirect:login.do";
         }
 
-        // 입력된 비밀번호와 저장된 비밀번호 비교
-        boolean loginSuccess = pwBCPE.matches(pw, member.getPw());
-        System.out.println("로그인 시도 - 입력된 ID: " + id + ", 입력된 PW: " + pw + ", 저장된 PW: " + member.getPw() + ", 비교 결과: " + loginSuccess);
+        // 로그인 시도 로그 추가
+        System.out.println("로그인 시도 - 입력된 비밀번호: " + pw);
+        System.out.println("로그인 시도 - 데이터베이스의 암호화된 비밀번호: " + member.getPw());
 
-        // 로그인 성공 시
+        boolean loginSuccess = memberService.checkPassword(pw, member.getPw());
+        System.out.println("비밀번호 비교 결과: " + loginSuccess);
+
         if (loginSuccess) {
-            // 세션 설정
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                session.invalidate();
+            }
+            session = request.getSession(true);
             session.setAttribute("member", member);
-            session.setAttribute("id", id);
-            System.out.println("로그인 성공: " + id); // 로그 추가
+            session.setAttribute("sid", id);
+            System.out.println("세션에 저장된 member: " + session.getAttribute("member"));
             model.addAttribute("msg", "로그인 성공");
-            return "redirect:/home.jsp"; // 로그인 성공 시 홈으로 리다이렉트
+            return "redirect:/";
         } else {
-            // 로그인 실패 시
-            redirectAtt.addFlashAttribute("msg", "로그인 실패: 비밀번호가 일치하지 않습니다.");
+            rttr.addFlashAttribute("msg", "로그인 실패: 비밀번호가 일치하지 않습니다.");
             return "redirect:login.do";
         }
     }
 
     @GetMapping("join.do")
-    public String join(@ModelAttribute("member") Member mem, Model model) {
-        model.addAttribute("Member", mem);
+    public String join(@ModelAttribute("member") Member member, Model model) {
+        model.addAttribute("Member", member);
         return "member/join";
     }
 
     @PostMapping("joinPro.do")
     public String joinPro(HttpServletRequest request, Model model, RedirectAttributes rttr) {
-        Member mem = new Member();
-        mem.setId(request.getParameter("id"));
-        mem.setPw(pwBCPE.encode(request.getParameter("pw")));
-        mem.setName(request.getParameter("name"));
+        Member member = new Member();
+        member.setId(request.getParameter("id"));
+
+        String rawPassword = request.getParameter("pw");
+        member.setPw(rawPassword);
+
+        member.setName(request.getParameter("name"));
+
+        //member.setEmail(request.getParameter("email"));
+        //String email = request.getParameter("useremail1") + "@" + request.getParameter("useremail2");
+        //member.setEmail(email);
+     		String emailbox = request.getParameter("emailbox");
+     		String useremail1 = request.getParameter("useremail1");
+     		String useremail2 = request.getParameter("useremail2"); 
+            // 디버깅용 로그 추가
+            System.out.println("emailbox: " + emailbox);
+            System.out.println("useremail1: " + useremail1);
+            System.out.println("useremail2: " + useremail2);
+     		String email;
+     		if ("self".equals(emailbox)) {
+     		    email = request.getParameter("useremail1") + "@" + useremail2;
+     		} else {
+     		    email = request.getParameter("useremail1") + "@" + emailbox;
+     		}
+     		member.setEmail(email);
+        
+        
+        
+        
+        
+        //member.setTel(request.getParameter("tel"));
+        String tel = request.getParameter("usertel1") + "-" + request.getParameter("usertel2") + "-" + request.getParameter("usertel3");
+        member.setTel(tel);
+        
         String birth = request.getParameter("year") + "-" + request.getParameter("month") + "-" + request.getParameter("day");
-        mem.setBirth(birth);
-        mem.setGender(request.getParameter("gender"));
-        mem.setPostcode(request.getParameter("postcode"));
-        String addr = request.getParameter("addr1") + " " + request.getParameter("addr2");
-        mem.setAddr(addr);
-        memberService.insMember(mem);
-        model.addAttribute("msg", "회원가입이 완료되었습니다. 다시 로그인 해주세요.");
-        return "redirect:/";
+        member.setBirth(birth);
+        
+        member.setGender(request.getParameter("gender"));
+        member.setPostcode(request.getParameter("postcode"));
+//        member.setAddr(request.getParameter("addr"));
+        String addr = request.getParameter("roadaddr1") + " " + request.getParameter("roadaddr2");
+        member.setAddr(addr);
+
+        memberService.insMember(member);
+
+        rttr.addFlashAttribute("msg", "회원가입이 완료되었습니다. 다시 로그인 해주세요.");
+        return "redirect:/member/login.do";
     }
 
     @RequestMapping("agree.do")
-    public String agreeForm() {
+    public String agreeForm(Model model, RedirectAttributes rttr) {
+        rttr.addAttribute("msg", "회원 약관에 동의하시기 바랍니다.");
         return "member/agree";
     }
- 
+	@RequestMapping("agree2.do")
+    public String showagree2() {
+        return "member/agree2";
+    }
     @PostMapping("idCheck.do")
     public void idCheck(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
         String id = request.getParameter("id");
         Member member = memberService.getMember(id);
-        boolean result;
-        if (member != null) {
-            result = false;
-        } else {
-            result = true;
-        }
+        boolean result = (member == null);
         JSONObject json = new JSONObject();
         json.put("result", result);
         PrintWriter out = response.getWriter();
         out.println(json.toString());
     }
+    
+    
 
     @RequestMapping("logout.do")
     public String logout(HttpSession session, Model model) {
         session.invalidate();
-        model.addAttribute("message", "로그아웃");
+        model.addAttribute("message", "로그아웃 되었습니다.");
         return "redirect:/member/login.do";
     }
 
+//    @GetMapping("myInfo.do")
+//    public String myInfo(Model model) {
+//        Member member = (Member) session.getAttribute("member");
+//        model.addAttribute("member", member);
+//        return "member/myInfo";
+//    }
     @GetMapping("myInfo.do")
     public String myInfo(Model model) {
         Member member = (Member) session.getAttribute("member");
+        System.out.println("세션에서 가져온 member: " + member);
+        if (member == null) {
+            System.out.println("세션에서 member 객체를 가져올 수 없습니다.");
+            return "redirect:/member/login.do";
+        }
         model.addAttribute("member", member);
         return "member/myInfo";
     }
 
+//    @GetMapping("myUpdate.do")
+//    public String myUpdate(Model model) {
+//        Member member = (Member) session.getAttribute("member");
+//        model.addAttribute("member", member);
+//        return "member/myUpdate";
+//    }
+    
     @GetMapping("myUpdate.do")
     public String myUpdate(Model model) {
         Member member = (Member) session.getAttribute("member");
+
+        if (member != null && member.getAddr() != null) {
+            String[] addrParts = member.getAddr().split("\\$", 2);
+            String addr1 = addrParts.length > 0 ? addrParts[0] : "";
+            String addr2 = addrParts.length > 1 ? addrParts[1] : "";
+            model.addAttribute("addr1", addr1);
+            model.addAttribute("addr2", addr2);
+        }
+
         model.addAttribute("member", member);
         return "member/myUpdate";
     }
@@ -139,16 +233,28 @@ public class MemberController {
     public String myUpdatePro(HttpServletRequest request, Model model, RedirectAttributes rttr) {
         Member member = new Member();
         member.setId(request.getParameter("id"));
-        member.setPw(pwBCPE.encode(request.getParameter("pw"))); // 비밀번호 암호화
+
+        String rawPassword = request.getParameter("pw");
+        member.setPw(rawPassword);
+
         member.setName(request.getParameter("name"));
+        member.setEmail(request.getParameter("email"));
+        
+        
+        member.setTel(request.getParameter("tel"));
+        
         member.setBirth(request.getParameter("birth"));
         member.setGender(request.getParameter("gender"));
         member.setPostcode(request.getParameter("postcode"));
         member.setAddr(request.getParameter("addr1") + " " + request.getParameter("addr2"));
-        memberService.changeInfo(member);
-        model.addAttribute("msg", "회원 정보가 업데이트되었습니다. 다시 로그인 해주세요.");
+        memberService.upInfo(member);
+
+        // 회원 정보 업데이트 로그 추가
+        System.out.println("회원 정보 업데이트 - 저장된 회원 정보: " + member.toString());
+
+        rttr.addFlashAttribute("msg", "회원 정보가 업데이트되었습니다. 다시 로그인 해주세요.");
         session.invalidate();
-        return "redirect:/";
+        return "redirect:/member/login.do";
     }
 
     @GetMapping("memberDelete.do")
@@ -157,4 +263,6 @@ public class MemberController {
         session.invalidate();
         return "redirect:/";
     }
+    
+   
 }

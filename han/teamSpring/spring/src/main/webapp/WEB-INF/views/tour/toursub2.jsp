@@ -116,7 +116,7 @@ ul {list-style: none;}
         </style>
 
 </head>
-<body>
+<body style="overflow-y:hidden !important">
    <%@ include file="/WEB-INF/views/header.jsp" %> 
     <main id="contents" class="clr-fix">
         <figure id="vs">

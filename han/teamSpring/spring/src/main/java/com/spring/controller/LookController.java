@@ -14,4 +14,8 @@ public class LookController {
     public String showMuseumPage() {
         return "look/museum";
     }
+	@RequestMapping("treasure.do")
+    public String showTreasurePage() {
+        return "look/treasure";
+    }
 }

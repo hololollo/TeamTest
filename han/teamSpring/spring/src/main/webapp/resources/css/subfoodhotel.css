@@ -7,43 +7,6 @@ body { width: 100vw;  overflow-x:hidden; min-width:1200px; list-style: none;}
 ul { list-style: none; }
 a { text-decoration: none; }
 
-/*grid속성 레이아웃 바탕*/
-.layout {
-  background-color: #fff;
-  display: grid;
-  grid-template-columns: 240px auto;
-  grid-template-rows: 50px auto 50px;
-}
-/*grid 레이아웃 헤더 column 이어붙이기*/
-.layout header {
-  grid-column: span 2;
-}
-
-.breadcrumb { 
-  clear:both; border-bottom:2px solid #777; 
-  padding-top: 24px; padding-bottom: 24px; text-align: right; 
-  box-sizing:border-box;  padding-right: 40px;   
-}
-.breadcrumb p * { 
-  padding:0px 7px; 
-  color:#333; 
-  font-weight:bold; 
-}
-.breadcrumb p a:after { 
-  content:">"; 
-  padding-left: 14px; 
-}
-/*메뉴바 밑 사진 바탕*/
-.layout .top_wrap {
-  width:100vw;
-}
-/*메뉴바 밑 사진*/
-.layout .top_wrap img{
-  width:100%;
-  height:400px;
-  margin: 0 auto;
-}
-
 /*메인목록 바탕*/
 .layout main {
   background-color: white;
@@ -120,29 +83,6 @@ a { text-decoration: none; }
   #item5 img{ margin-top:20px; width:280px; height: 200px; border-radius: 30px; }
   #item6 { top:460px; right:60px;}
   #item6 img{ margin-top:20px; width:280px; height: 200px; border-radius: 30px; }
-
-/*사이드 메뉴*/
-.layout aside {
-  list-style: none;
-  box-sizing: border-box; 
-  padding: 10px;
-}
-.layout aside .menu{
-  background-color: rgba(0, 78, 205, 0.87);
-}
-.layout aside #side { margin-top: 600px; padding-left: 24px; }      
-.layout aside #side > .menu > li { text-align:center; line-height: 80px; border:1px solid;}
-.layout aside #side a.dp1 { color:#333; font-size:24px; font-weight:900;}
-.layout aside #side li .sub { height:0px; overflow:hidden; transition:0.9s; }
-.layout aside #side li .sub li { margin-top:-5px; line-height:30px; padding:10px;}
-.layout aside #side li .sub li:hover{
-  background-color: deepskyblue;
-}
-.layout aside #side .sub li a.dp2 { color:#333; font-size:18px; font-weight: 600; }
-.layout aside #side li:hover .sub { height:150px; }
-.layout footer {
-  grid-column: span 2;
-}
 
 
 /*라마다 호텔 상세페이지*/

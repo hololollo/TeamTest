@@ -19,6 +19,7 @@
 	
 	<resources mapping="/include/**" location="/WEB-INF/views/include" />
 	<resources mapping="/notice/**" location="/WEB-INF/views/notice" />
+	<resources mapping="/board/**" location="/WEB-INF/views/board" />
 	<resources mapping="/member/**" location="/WEB-INF/views/member" />
 	<resources mapping="/reservate/**" location="/WEB-INF/views/reservate" />
 	<resources mapping="/qna/**" location="/WEB-INF/views/qna" />
@@ -34,6 +35,8 @@
 	<resources mapping="/ajax/**" location="/WEB-INF/views/ajax" />
 	<resources mapping="/img/**" location="/WEB-INF/views/img" />
 	<resources mapping="/css/**" location="/WEB-INF/views/css" />
+	<resources mapping="/food/**" location="/WEB-INF/views/food" />
+	<resources mapping="/look/**" location="/WEB-INF/views/look" />
 	
 	<!-- 리졸버에 대한 접두사와 접미사 설정 -->
 	<!-- @Controller가 렌더링하기 위해 선택한 뷰를 /WEB-INF/views 디렉터리의 .jsp 리소스로 확인합니다. -->
@@ -42,17 +45,31 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- 멀티파트 리졸버 설정 -->
+	<!-- 멀티파트 리졸버 설정 --> 
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760" /> <!-- 10mb 제한 -->
 	</beans:bean>
 	
 	<!-- 멀티파트 업로드 디렉토리 지정 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="D:\hty\teamTest\han\teamSpring\spring\src\main\webapp\resources\upload"></beans:constructor-arg>
+		<beans:constructor-arg value="D:/kang/server/tomcat9/apache-tomcat-9.0.87/uploads/"></beans:constructor-arg>
 	</beans:bean>
+   
+	
+	<!-- 
+	D:\hty\Server\apache-tomcat-9.0.87-windows-x64\apache-tomcat-9.0.87
+	 -->
+
+	
+	<!-- Spring Validator 지정 -->
+	<annotation-driven validator="validator"/>
+	<beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 	
 	<!-- 기본 메인 패키지 및 컨트롤러 패키지 설정 -->
 	<context:component-scan base-package="com.spring" />
+	
+	<!-- BCryptPasswordEncoder 빈 설정 -->
+    <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
 
 </beans:beans>

@@ -39,7 +39,7 @@
       #gnb2:hover .menu .sub {display: block;}
       #gnb2 .menu li:hover .sub {background-color: #ccc;}
 
-      .food_header{ width: 1980px; height: 600px; margin: 0px auto; background-image:url(${hpath}/resources/img/img5.jpg);
+      .food_header{ width: 1980px; height: 500px; margin: 0px auto; background-image:url(${hpath}/resources/img/img5.jpg);
       background-size: cover; /* Ensure the image covers the entire header */
       background-position: center; /* Center the image */
       background-repeat: no-repeat; /* Prevent the image from repeating */}
@@ -117,19 +117,19 @@
 <body>
         <div class="breadcrumb">
             <p>
-                <a href="${path1 }/home.jsp">홈</a><span>숙박/음식점</span>
+                <a href="${hpath }/home.do">홈</a><span>숙박/음식점</span>
             </p>
         </div>
     <section class="page" id="page1">
     <ul class="grid">
         <li id="item1" class="box1">
-            <div class="box"><a href="${hpath }/food/food.do"><img src="${hpath }/resources/img/image-sub/sub-food.jpg" alt="음식점 정보"></a></div>
+            <div class="box"><a href="${hpath }/food/food.do"><img src="${hpath}/resources/img/image-sub/sub-food.jpg" alt="음식점 정보"></a></div>
         </li>
         <li id="item2" class="box1">
-            <div class="box"><a href="page3.html"><img src="${hpath }/resources/img/image-sub/sub-house.jpg" alt="숙소정보"></a></div>
+            <div class="box"><a href="${hpath }/food/hotel.do"><img src="${hpath }/resources/img/image-sub/sub-house.jpg" alt="숙소정보"></a></div>
         </li>
         <li id="item3" class="box1">
-            <div class="box"><a href="page4.html"><img src="${hpath }/resources/img/image-sub/sub-market.jpg" alt="전통시장"></a></div>
+            <div class="box"><a href="${hpath }/food/market.do"><img src="${hpath }/resources/img/image-sub/sub-market.jpg" alt="전통시장"></a></div>
         </li>
     </ul>
 </section>

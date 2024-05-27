@@ -12,11 +12,11 @@ import java.util.List;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-    @Autowired
+	@Autowired
     private MemberDAO memberDAO;
-
+    
     @Autowired
-    private BCryptPasswordEncoder pwBCPE;
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public List<Member> getMemberList() {
@@ -29,44 +29,34 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public int maxNum() {
-        return memberDAO.maxNum();
-    }
-
-    @Override
     public void insMember(Member member) {
-        String rawPassword = member.getPw();
-        String encodedPassword = pwBCPE.encode(rawPassword);
-        member.setPw(encodedPassword);
-        System.out.println("비밀번호 암호화 - 원본: " + rawPassword + ", 암호화: " + encodedPassword);
+        // 비밀번호 해싱
+        String hashedPassword = passwordEncoder.encode(member.getPw());
+        member.setPw(hashedPassword);
+        // 회원 정보 저장
         memberDAO.insMember(member);
     }
 
     @Override
-    public void changePw(Member member) {
-        member.setPw(pwBCPE.encode(member.getPw()));
-        memberDAO.changePw(member);
+    public void upPw(String id, String pw) {
+        // 비밀번호 해싱
+        String hashedPassword = passwordEncoder.encode(pw);
+        memberDAO.upPw(id, hashedPassword);
     }
 
     @Override
-    public void changeInfo(Member member) {
-        memberDAO.changeInfo(member);
+    public void upInfo(Member member) {
+        memberDAO.upInfo(member);
     }
 
     @Override
     public void delMember(String id) {
         memberDAO.delMember(id);
     }
-
+    
     @Override
-    public String loginCheck(Member member) {
-        return memberDAO.loginCheck(member);
-    }
-
-
-    @Override
-    public boolean idCheck(String id) {
-        return memberDAO.idCheck(id);
+    public boolean checkPassword(String rawPassword, String encodedPassword) {
+        return passwordEncoder.matches(rawPassword, encodedPassword);
     }
     
 

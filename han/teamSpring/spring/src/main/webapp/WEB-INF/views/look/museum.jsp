@@ -19,6 +19,28 @@
         .museum_wrap{width: 100%;}
         .museum_contents {width: 1290px; height: 1200px; margin: 50px auto;}
         hr{height: 2px; background-color: #333; margin: 10px auto; }
+        
+         .breadcrumb {
+	clear: both;
+	border-bottom: 2px solid #777;
+	padding-top: 12px;
+	padding-bottom: 24px;
+	text-align: right;
+	box-sizing: border-box;
+	padding-right: 40px;
+}
+
+.breadcrumb p * {
+    font-size : 20px;
+	padding: 0px 7px;
+	color: #333;
+	font-weight: bold;
+}
+
+.breadcrumb p a:after {
+	content: ">";
+	padding-left: 14px;
+}
 
         .museum_wrap p{font-family: "Nanum Gothic", sans-serif; font-size: 13px; }
         .museum_contents p{ font-size: 30px; font-weight:bold;}
@@ -53,6 +75,12 @@
         <div class="museum_contents">
             <p class="contents_title">박물관 </p>
             <hr>
+            <div class="breadcrumb">
+				<p>
+					<a href="${hpath }/home.do">홈</a>
+					<span><a href="${hpath }">문화예술</a></span><span>박물관</span>
+				</p>
+			</div>
             <div class="container">
                 <div class="card-column column-0">
                   <div class="card card-color-0">

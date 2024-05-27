@@ -41,9 +41,7 @@
                 <input type="submit" id="login" name="login" class="button" value="로그인">
             </form>
             <br>
-            <a href="#">아이디찾기 ㅣ</a>
-            <a href="#">비밀번호찾기 ㅣ</a>
-            <a href="${path}/member/agree.do">회원가입</a>
+            <a href="${path}/member/agree.do"> | 회원가입 | </a>
         </div>
     </div>
     <%@ include file="/WEB-INF/views/footer.jsp" %>   

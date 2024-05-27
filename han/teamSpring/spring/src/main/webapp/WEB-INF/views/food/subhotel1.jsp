@@ -17,7 +17,7 @@
         a{text-decoration: none;}
  
 
-      .food_header{ width: 1980px; height: 600px; margin: 0px auto; background-image:url(${hpath}/resources/img/img6.jpg);
+      .food_header{ width: 1980px; height: 500px; margin: 0px auto; background-image:url(${hpath}/resources/img/img6.jpg);
       background-size: cover; /* Ensure the image covers the entire header */
       background-position: center; /* Center the image */
       background-repeat: no-repeat; /* Prevent the image from repeating */}
@@ -127,46 +127,6 @@
   #item6 { top:460px; right:60px;}
   #item6 img{ margin-top:20px; width:280px; height: 200px; border-radius: 30px; }
 
-/*사이드 메뉴*/
-.aside_wrap{width: 200px; height:240px ; position: absolute; left: -200px; top: -500px; }
-.layout aside {
-  list-style: none;
-  box-sizing: border-box; 
-  padding: 10px;
-}
-.layout aside .menu{
-  background-color: rgba(0, 78, 205, 0.87);
-}
-.layout aside #side { margin-top: 600px; padding-left: 24px; }      
-.layout aside #side > .menu > li { text-align:center; line-height: 80px; border:1px solid;}
-.layout aside #side a.dp1 { color:#333; font-size:24px; font-weight:900;}
-.layout aside #side li .sub { height:0px; overflow:hidden; transition:0.9s; }
-.layout aside #side li .sub li { margin-top:-5px; line-height:30px; padding:10px;}
-.layout aside #side li .sub li:hover{
-  background-color: deepskyblue;
-}
-.layout aside #side .sub li a.dp2 { color:#333; font-size:18px; font-weight: 600; }
-.layout aside #side li:hover .sub { height:150px; }
-.layout footer {
-  grid-column: span 2;
-}
-
-
-
-footer { width:100%; height: 250px; background-color: #1F1E2C; }
-.fc_wrap {position: relative;  width: 1290px; height: 180px;   margin: 0px auto;  margin-top: 20px; }
-footer .logo{position: absolute;  top:20px; width:200px; height: 150px; }
-footer .drop{position: absolute; right: 20px; bottom: 25px;  }
-
-.foot_menu {width:1000px; height:auto;   margin: auto; }
-.foot_menu ul{display: flex; margin-left: 100px; padding-top: 35px; }
-.foot_menu li{padding-left: 30px;}
-.foot_menu a{color: white;}
-
-.copyright{width: auto; margin-top: 70px;  height: auto;}
-.copyright p{color:#fff; padding-left: 270px;}
-
-
 /*라마다 호텔 상세페이지*/
 .layout .ramada { 
   position:relative; 
@@ -263,40 +223,6 @@ footer .drop{position: absolute; right: 20px; bottom: 25px;  }
  <%@ include file="../header.jsp" %>
     <header class="food_header"></header>
     <main class="layout">
-    <div class="aside_wrap">
-    <aside>
-      <nav id="side">
-        <ul class="menu">
-            <li>
-                <a href="" class="dp1">관광명소</a>
-                <ul class="sub">
-                    <li><a href="" class="dp2">산림</a></li>
-                    <li><a href="" class="dp2">해안</a></li>
-                    <li><a href="" class="dp2">놀거리</a></li>
-                    <li><a href="" class="dp2">볼거리</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="" class="dp1">문화/예술</a>
-                <ul class="sub">
-                    <li><a href="" class="dp2">문화재</a></li>
-                    <li><a href="" class="dp2">박물관/전시</a></li>
-                    <li><a href="" class="dp2">이달의공연</a></li>
-                    <li><a href="" class="dp2">추가할거있음</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="./" class="dp1">숙박/음식점</a>
-                <ul class="sub">
-                    <li><a href="" class="dp2">먹거리</a></li>
-                    <li><a href="" class="dp2">전통시장</a></li>
-                    <li><a href="" class="dp2">숙박정보</a></li>
-                </ul>
-            </li>
-        </ul>
-      </nav>
-    </aside>
-    </div>
       <div class="breadcrumb">
         <p>
           <a href="${hpath }/home.do">홈</a><span><a href="${hpath }/fmain.do">숙박/음식점</a></span><span><a href="${hpath }/hotel.do">숙박정보</a></span><span>상세보기</span>

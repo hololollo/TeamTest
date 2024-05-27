@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -10,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-        <style>
+    <style>
         * { margin: 0; padding: 0; }
         body { width:100%; height: auto; } 
         .headerimg{width: 1930px; height: 600px; background-image:url(${path}/resources/img/login.png);
@@ -19,11 +18,11 @@
         background-position: center; /* Center the image */
         background-repeat: no-repeat; /* Prevent the image from repeating */}
         .join_contents{width: 1290px; height: auto; margin: 0 auto; }
-        .join_wrap{width: 800px; height: 1050px; margin: 2rem auto; }
+        .join_wrap{width: 800px; height: 1350px; margin: 2rem auto; }
         .join_wrap h1{margin-top: 2rem; text-align: center;}
         .input {width: 400px; height: auto; margin: 0px auto; margin-top: 3rem; position: relative;} /* 기존 너비 수정 */
         .join_wrap h3 { color: grey; position: absolute; top: -1.5rem; left: 0; } /* h3 위치 조정 */
-        .input input[type="text"] { width: 350px; /* 너비 조절 */height: 40px; /* 높이 조절 */ border: 1px solid gray; border-radius: 3px;
+        .input input[type="text"], .input input[type="password"], .input input[type="email"], .input input[type="tel"] { width: 350px; /* 너비 조절 */height: 40px; /* 높이 조절 */ border: 1px solid gray; border-radius: 3px;
         margin-top: 1rem; padding-left: 1rem;} 
         .input .usergender{ width: 364px; /* 너비 조절 */height: 40px; /* 높이 조절 */ border: 1px solid gray; border-radius: 3px;
         margin-top: 1rem; padding-left: 1rem; color: gray;} 
@@ -32,7 +31,9 @@
         margin-top: 1rem; padding-left:1rem; color: gray;}
         .input.birth input { width: 100px;} /* 생년월일 부분 너비 조절 */
         .input.birth input:last-child { margin-right: 0; } /* 마지막 입력 박스에는 마진 없도록 설정 */
-
+        .input.email input {width: 150px;}
+        .input.email select{width: 150px; height: 40px; position: absolute; top:16px; right:-130px ; border-radius: 3px;}
+        .input.tel input{width: 90px; height: 40px; border-radius: 3px;}
        .input input[type="button"]{width: 150px; height: 40px; position: absolute; top: 16px; right: -130px; }
        .endbtn{position: relative;}
        .endbtn .button1 {width: 150px; height: 40px; position: absolute; left: 200px; top: 40px }  
@@ -42,7 +43,7 @@
 </head>
 <body>
     <header>
-    <%@ include file="/WEB-INF/views/header.jsp" %> 
+        <%@ include file="/WEB-INF/views/header.jsp" %> 
     </header>
     <div class="headerimg"></div>
     <div class="join_contents">
@@ -72,6 +73,35 @@
                     <h3>이름</h3>
                     <input type="text" id="name" name="name" class="name" placeholder="이름" required>
                 </div>
+
+                <div class="input email">
+                    <h3 class="">이메일주소</h3>
+                    <input type="text" id="useremail1" name="useremail1" class="useremail1" placeholder="이메일" required>
+                    <span>@</span>
+                    <input type="text" id="useremail2" name="useremail2" class="useremail2" placeholder="직접입력" required>
+                    <select class="emailbox" id="emailbox">
+                        <option value="self">직접 입력</option> 
+                        <option value="naver.com">naver.com</option>
+                        <option value="google.com">google.com</option>
+                        <option value="hanmail.net">daum.net</option>
+                        <option value="nate.com">nate.com</option>
+                        <option value="kakao.com">kakao.com</option>
+                    </select>
+                </div>
+                <script>
+                    var emaliboxList = document.querySelector('#emailbox');
+                    var domainInput = document.querySelector('#useremail2');
+                    emaliboxList.addEventListener('change', (event) => {
+                        if (event.target.value !== "self") {
+                            domainInput.value = event.target.value;
+                            domainInput.disabled = true;
+                        } else {
+                            domainInput.value = "";
+                            domainInput.disabled = false;
+                        }
+                    });
+                </script>
+
                 <div class="input birth">
                     <h3>생년월일</h3>
                     <input type="text" id="year" name="year" class="year" placeholder="년(4자)" required>
@@ -125,22 +155,37 @@
                         <option value="31">31일</option>
                     </select>
                 </div>
+
+                <div class="input tel">
+                    <h3 class="">전화번호</h3>
+                    <input type="text" id="usertel1" name="usertel1" class="usertel1" placeholder="" required >
+                    <span>-</span>
+                    <input type="text" id="usertel2" name="usertel2" class="usertel" placeholder="" required >
+                    <span>-</span>
+                    <input type="text" id="usertel3" name="usertel3" class="usertel" placeholder="" required >
+                </div>
+
                 <div class="input gender">
-                    <h3>성별</h3>
+                    <h3 class="">성별</h3>
                     <select class="usergender" id="gender" name="gender" required>
                         <option value="">선택하세요</option>
                         <option value="남">남</option>
                         <option value="여">여</option>
                     </select>
                 </div>
+
                 <div class="input addr">
-                    <h3>자택주소</h3>
+                    <h3 class="">자택주소</h3>
                     <input type="text" id="postcode" name="postcode" class="postcode" placeholder="우편번호" readonly required>
                     <input type="button" id="pcodebtn" class="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-                    <input type="text" id="addr" name="addr" class="addr" placeholder="주소" readonly required>
+                    <input type="text" id="roadaddr1" name="roadaddr1" class="roadaddr1" placeholder="도로명주소" readonly required >
+                    <input type="text" id="roadaddr2" name="roadaddr2" class="roadaddr2" placeholder="이하 주소입력" required >
                 </div>
-                <input type="submit" class="submit success button" value="회원 가입">
-                <input type="reset" class="reset button" value="취소">
+
+                <div class="endbtn">
+                    <input type="submit" id="cfbtn" class="button1" value="확인" >
+                    <input type="button" id="backbtn" class="button2" onclick="history.back();" value="돌아가기" >
+                </div>
             </form>
         </div>
     </div>
@@ -170,41 +215,61 @@
                         document.getElementById("addr").value = '';
                     }
                     document.getElementById('postcode').value = data.zonecode;
-                    document.getElementById("addr").value = addr + extraAddr;
+                    document.getElementById("roadaddr1").value = addr + extraAddr;
+                   
                 }
             }).open();
         }
-
         function idCheck() {
-            if ($("#id").val() == "") {
+            var id = $("#id").val();
+            var idPattern = /^(?=.*[a-z])(?=.*\d)[a-z\d]{5,12}$/; // 아이디는 5~12자의 영문 소문자, 숫자 조합, 숫자와 영문이 모두 포함되어야 함
+
+            if (id === "") {
                 alert("아이디를 입력하지 않으셨습니다.");
                 $("#id").focus();
                 return;
             }
-            var params = { id: $("#id").val() }
+         	// 예외 케이스: "admin"
+            if (id === "admin") {
+                // "admin" 아이디는 특별 처리
+                $("#idck").val("yes");
+                $("#msg").html("<strong style='color:blue'>사용가능한 아이디 입니다.</strong>");
+                return;
+            }
+
+            if (!idPattern.test(id)) {
+                alert("아이디 패턴이 올바르지 않습니다. 아이디는 5~12자의 영문 소문자와 숫자 조합이어야 합니다.");
+                $("#msg").html("<strong style='color:red'>올바르지 않습니다.</strong>")
+                $("#id").focus();
+                return;
+            }
+
+            var params = { id: id };
             $.ajax({
                 url: "${path}/member/idCheck.do",
                 type: "post",
                 dataType: "json",
                 data: params,
                 success: function(result) {
-                    console.log(result.result);
                     var idChk = result.result;
-                    if (idChk == false) {
+                    if (idChk === false) {
                         $("#idck").val("no");
                         $("#msg").html("<strong style='color:red'>기존에 사용되고 있는 아이디 입니다. 다시 입력하시기 바랍니다.</strong>");
                         $("#id").focus();
-                    } else if (idChk == true) {
+                    } else if (idChk === true) {
                         $("#idck").val("yes");
                         $("#msg").html("<strong style='color:blue'>사용가능한 아이디 입니다.</strong>");
-                    } else if (idChk == "") {
+                    } else if (idChk === "") {
                         $("#msg").html("<strong>아이디가 확인되지 않았습니다. 다시 시도해주시기 바랍니다.</strong>");
-                    }
+                    } 
                 }
             });
         }
+        
+        
 
         function joinCheck(form) {
+        	var passwordPattern = /^(?=.*[a-z])(?=.*\d)[a-z\d]{4,}$/; // 최소 4자, 소문자, 숫자 포함
             if ($("#idck").val() == "no") {
                 alert("아이디 중복 체크를 해주세요.");
                 $("#id").focus();
@@ -213,6 +278,11 @@
             if ($("#pw").val() != $("#usercfpw").val()) {
                 alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
                 $("#usercfpw").focus();
+                return false;
+            }
+            if (!passwordPattern.test($("#pw").val())) {
+                alert("비밀번호는 최소 4자 이상이어야 하며, 영문 소문자 및 숫자를 포함해야 합니다.");
+                $("#pw").focus();
                 return false;
             }
             return true;

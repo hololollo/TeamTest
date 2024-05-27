@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공연 축제</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">     
@@ -21,6 +21,28 @@
         .art_header{ width: 1290px; height: 600px; margin: 0px auto;}
         .art_contents {width: 1290px; height: auto; margin: 50px auto;}
         hr{height: 2px; background-color: #333; margin: 10px auto; }
+        
+        .breadcrumb {
+	clear: both;
+	border-bottom: 2px solid #777;
+	padding-top: 12px;
+	padding-bottom: 24px;
+	text-align: right;
+	box-sizing: border-box;
+	padding-right: 40px;
+}
+
+.breadcrumb p * {
+    font-size : 20px;
+	padding: 0px 7px;
+	color: #333;
+	font-weight: bold;
+}
+
+.breadcrumb p a:after {
+	content: ">";
+	padding-left: 14px;
+}
 
         .art_wrap p{font-family: "Nanum Gothic", sans-serif; font-size: 13px; }
         .art_contents p{ font-size: 30px; font-weight:bold;}
@@ -93,9 +115,9 @@
         }
         
          .art_header{ width: 1980px; height: 600px; margin: 0px auto; background-image:url(${hpath}/resources/img/artimg/artbanner.jpg);
-		 background-size: cover; /* Ensure the image covers the entire header */
-		 background-position: center; /* Center the image */
-		 background-repeat: no-repeat; /* Prevent the image from repeating */}
+       background-size: cover; /* Ensure the image covers the entire header */
+       background-position: center; /* Center the image */
+       background-repeat: no-repeat; /* Prevent the image from repeating */}
         
         footer a{font-family: "Nanum Gothic", sans-serif; font-weight:500 ;}
         footer p{font-family: "Nanum Gothic", sans-serif; font-size: 13px; }
@@ -121,10 +143,16 @@
         <div class="art_contents">
             <p class="contents_title">공연 · 문화 </p>
             <hr>
+            <div class="breadcrumb">
+				<p>
+					<a href="${hpath }/home.do">홈</a>
+					<span><a href="${hpath }">문화예술</a></span><span>공연 · 문화</span>
+				</p>
+			</div>
             <ul class="card-list">
                 <li class="card">
-                    <a class="card-image" href="">
-                        <img class="" src="${hpath }/resources/img/artimg/begin.gif" alt="속초비긴어게인" />
+                    <a class="card-image" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=217&cDate=2024-05-26&mode=banner">
+                        <img class="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=217&cDate=2024-05-26&mode=banner" src="${hpath }/resources/img/artimg/begin.gif" alt="속초비긴어게인" />
                     </a>
                     <a class="card-description" href="" target="">
                         <h4>공연 · 행사</h4>
@@ -135,8 +163,8 @@
 
             <ul class="card-list">
                 <li class="card">
-                    <a class="card-image" href="">
-                        <img class="" src="${hpath }/resources/img/artimg/뮤지컬 디스이스잇.gif" alt="뮤지컬 디스이스잇" />
+                    <a class="card-image" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=149&cDate=2024-05-26&mode=banner">
+                        <img class="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=149&cDate=2024-05-26&mode=banner" src="${hpath }/resources/img/artimg/뮤지컬 디스이스잇.gif" alt="뮤지컬 디스이스잇" />
                     </a>
                     <a class="card-description" href="" target="">
                         <h4>뮤지컬</h4>
@@ -147,10 +175,10 @@
 
             <ul class="card-list">
                 <li class="card">
-                    <a class="card-image" href="">
+                    <a class="card-image" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=201&cDate=2024-05-26&mode=banner">
                         <img class="" src="${hpath }/resources/img/artimg/뮤지컬 싯다르타.gif" alt="뮤지컬싯다르타" />
                     </a>
-                    <a class="card-description" href="" target="">
+                    <a class="card-description" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=201&cDate=2024-05-26&mode=banner" target="">
                         <h4>뮤지컬</h4>
                         <p>뮤지컬 싯다르타</p>
                     </a>
@@ -159,10 +187,10 @@
 
             <ul class="card-list">
                 <li class="card">
-                    <a class="card-image" href="">
+                    <a class="card-image" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=203&cDate=2024-05-26&mode=banner">
                         <img class="" src="${hpath }/resources/img/artimg/버스킹페스타.gif" alt="버스킹페스타" />
                     </a>
-                    <a class="card-description" href="" target="">
+                    <a class="card-description" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=203&cDate=2024-05-26&mode=banner" target="">
                         <h4>공연 · 버스킹</h4>
                         <p>버스킹페스타</p>
                     </a>
@@ -171,10 +199,10 @@
 
             <ul class="card-list">
                 <li class="card">
-                    <a class="card-image" href="">
+                    <a class="card-image" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=146&cDate=2024-05-26&mode=banner">
                         <img class="" src="${hpath }/resources/img/artimg/여름 그리고 재즈.gif" alt="여름 그리고 재즈" />
                     </a>
-                    <a class="card-description" href="" target="">
+                    <a class="card-description" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=146&cDate=2024-05-26&mode=banner" target="">
                         <h4>공연</h4>
                         <p>여름 그리고 재즈</p>
                     </a>
@@ -183,10 +211,10 @@
 
             <ul class="card-list">
                 <li class="card">
-                    <a class="card-image" href="">
+                    <a class="card-image" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=200&cDate=2024-05-26&mode=banner">
                         <img class="" src="${hpath }/resources/img/artimg/축구연극패스.gif" alt="축구연극패스" />
                     </a>
-                    <a class="card-description" href="" target="">
+                    <a class="card-description" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=200&cDate=2024-05-26&mode=banner" target="">
                         <h4>연극</h4>
                         <p>축구연극 패스</p>
                     </a>
@@ -195,10 +223,10 @@
 
             <ul class="card-list">
                 <li class="card">
-                    <a class="card-image" href="">
+                    <a class="card-image" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=159&cDate=2024-05-26&mode=banner">
                         <img class="" src="${hpath }/resources/img/artimg/속초 문화버스킹.jpg" alt="속초문화버스킹" />
                     </a>
-                    <a class="card-description" href="" target="">
+                    <a class="card-description" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=159&cDate=2024-05-26&mode=banner" target="">
                         <h4>공연 · 버스킹</h4>
                         <p>속초 문화버스킹</p>
                     </a>
@@ -207,10 +235,10 @@
 
             <ul class="card-list">
                 <li class="card">
-                    <a class="card-image" href="">
+                    <a class="card-image" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=116&cDate=2024-05-26&mode=banner">
                         <img class="" src="${hpath }/resources/img/artimg/오케스트라.jpg" alt="오케스트라" />
                     </a>
-                    <a class="card-description" href="" target="">
+                    <a class="card-description" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=116&cDate=2024-05-26&mode=banner" target="">
                         <h4>공연</h4>
                         <p>설악 오케스트라</p>
                     </a>
@@ -219,10 +247,10 @@
 
             <ul class="card-list">
                 <li class="card">
-                    <a class="card-image" href="">
+                    <a class="card-image" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=112&cDate=2024-05-26&mode=banner">
                         <img class="" src="${hpath }/resources//img/artimg/위드콘서트.jpg" alt="위드콘서트" />
                     </a>
-                    <a class="card-description" href="" target="">
+                    <a class="card-description" href="http://sokchocf.or.kr/sokchocf/event/schedule/detail?calendarSeq=112&cDate=2024-05-26&mode=banner" target="">
                         <h4>공연</h4>
                         <p>위드콘서트</p>
                     </a>

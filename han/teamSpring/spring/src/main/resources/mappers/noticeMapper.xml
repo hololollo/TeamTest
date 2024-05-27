@@ -12,7 +12,8 @@
   </select>
 
 <insert id="insertNotice" parameterType="com.spring.dto.Notice">
-    INSERT INTO notice (bno, title, content, author, vcnt, resdate) VALUES (notice_seq.NEXTVAL, #{title}, #{content}, #{author}, #{vcnt}, #{resdate})
+    INSERT INTO notice (title, content, author, visited, resdate) 
+	VALUES (#{title}, #{content}, #{author}, #{visited}, #{resdate});
 </insert>
 
 
@@ -25,5 +26,10 @@
   <delete id="deleteNotice" parameterType="int">
     DELETE FROM notice WHERE bno = #{bno}
   </delete>
+  
+  <!-- 공지사항 조회수 증가 -->
+	<update id="vcntCount" parameterType="int">
+		update notice set visited=visited+1 where bno=#{bno}
+	</update>
 
 </mapper>

@@ -38,4 +38,13 @@ public class NoticeDAOImpl implements NoticeDAO {
     public void deleteNotice(int bno) {
         sqlSession.delete("notice.deleteNotice", bno);
     }
+
+	@Override
+	public void vcntCount(int bno) {
+		sqlSession.update("notice.vcntCount", bno);
+		
+	}
+   
+	
+    
 }

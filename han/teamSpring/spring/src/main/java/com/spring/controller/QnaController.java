@@ -1,16 +1,14 @@
 package com.spring.controller;
 
 import java.util.List;
-
-import javax.inject.Inject;
-
+import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.spring.dto.Qna;
 import com.spring.service.QnaService;
 
@@ -18,76 +16,75 @@ import com.spring.service.QnaService;
 @RequestMapping("/qna/")
 public class QnaController {
 
-    @Inject
-    QnaService qnaService;
+    @Autowired
+    private QnaService qnaService;
 
-    @GetMapping("qnalist.do")
-    public String getQnaList(Model model) {
+    @GetMapping("qnaList.do")
+    public String getQnaList(Model model, HttpSession session) {
+        String sid = (String) session.getAttribute("sid"); // 세션에서 로그인한 사용자의 아이디를 가져옴
         List<Qna> qnaList = qnaService.getQnaList();
         model.addAttribute("qnaList", qnaList);
+        model.addAttribute("sid", sid); // JSP에서 사용할 수 있도록 모델에 추가
         return "qna/qnaList";
     }
 
-    @GetMapping("qnarecent.do")
-    public String getRecentQnaList(Model model) {
-        List<Qna> recentQnaList = qnaService.getRecentQnaList();
-        model.addAttribute("recentQnaList", recentQnaList);
-        return "qna/recentQnaList";
-    }
-
     @GetMapping("getQna.do")
-    public String getQna(@RequestParam("no") int no, Model model) {
-        qnaService.incrementVisited(no); // 방문자 수 증가
+    public String getQna(@RequestParam("no") int no, Model model, HttpSession session) {
         Qna qna = qnaService.getQna(no);
+        String sid = (String) session.getAttribute("sid");
+        List<Qna> answerList = qnaService.getAnswers(no); // 답변 리스트 가져오기
         model.addAttribute("qna", qna);
+        model.addAttribute("answerList", answerList); // 답변 리스트 추가
+        model.addAttribute("sid", sid);
         return "qna/getQna";
     }
 
-    @GetMapping("insertQna.do")
-    public String insertQnaForm(Model model) {
-        model.addAttribute("qna", new Qna());
-        return "qna/qIns";
+    
+    @GetMapping("insQna.do")
+    public String insQnaForm() {
+        return "qna/insQna";
     }
 
-    @PostMapping("insertQna.do")
-    public String insertQna(Qna qna, Model model) {
-        qna.setPlevel(1); // 질문은 plevel이 1
-        qnaService.insertQna(qna);
-        qnaService.updateParnoForQna(qna.getNo());
-        return "redirect:list";
+    @PostMapping("insQna.do")
+    public String insQna(Qna qna, HttpSession session) {
+        String sid = (String) session.getAttribute("sid");
+        qna.setAid(sid);
+        qnaService.insQna(qna);
+        return "redirect:/qna/qnaList.do";
     }
 
-    @GetMapping("insertAnswerproQna.do")
-    public String insertAnswerForm(@RequestParam("parno") int parno, Model model) {
-        Qna qna = new Qna();
-        qna.setPlevel(2); // 답변은 plevel이 2
-        qna.setParno(parno); // 부모 글번호 설정
-        model.addAttribute("qna", qna);
-        return "qna/aIns";
-    }
-
-    @PostMapping("insertAnswerQna.do")
-    public String insertAnswer(Qna qna, Model model) {
-        qnaService.insertQna(qna);
-        return "redirect:list";
-    }
-
-    @GetMapping("editQna.do")
-    public String editQnaForm(@RequestParam("no") int no, Model model) {
+    @GetMapping("upQna.do")
+    public String upQnaForm(@RequestParam("no") int no, Model model) {
         Qna qna = qnaService.getQna(no);
         model.addAttribute("qna", qna);
-        return "qna/editQna";
+        return "qna/upQna";
     }
 
-    @PostMapping("editproQna.do")
-    public String editQna(Qna qna, Model model) {
-        qnaService.updateQna(qna);
-        return "redirect:get?no=" + qna.getNo();
+    @PostMapping("upQna.do")
+    public String upQna(Qna qna) {
+        qnaService.upQna(qna);
+        return "redirect:/qna/getQna.do?no=" + qna.getNo();
     }
 
-    @GetMapping("deleteQna.do")
-    public String deleteQna(@RequestParam("no") int no) {
-        qnaService.deleteQna(no);
-        return "redirect:list";
+    @GetMapping("delQna.do")
+    public String delQna(@RequestParam("no") int no) {
+        qnaService.delQna(no);
+        return "redirect:/qna/qnaList.do";
+    }
+
+    @GetMapping("insAnswer.do")
+    public String insQnaAnswerForm(@RequestParam("parno") int parno, Model model) {
+        model.addAttribute("parno", parno);
+        return "qna/insQnaAnswer";
+    }
+
+    @PostMapping("insAnswer.do")
+    public String insQnaAnswer(Qna qna, HttpSession session) {
+        String sid = (String) session.getAttribute("sid");
+        if ("admin".equals(sid)) { // 관리자인지 확인
+            qna.setAid(sid);
+            qnaService.insQna(qna);
+        }
+        return "redirect:/qna/getQna.do?no=" + qna.getParno();
     }
 }

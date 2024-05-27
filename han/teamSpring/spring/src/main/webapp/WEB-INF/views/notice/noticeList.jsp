@@ -17,12 +17,15 @@
         a{text-decoration: none;}
  
 
-      .notice_header{ width: 1980px; height: 600px; margin: 0px auto; background-image:url(img/notiheader.jpg);
+      .notice_header{ width: 1980px; height: 600px; margin: 0px auto; background-image:url(${path}/resources/img/notiheader.jpg);
       background-size: cover; /* Ensure the image covers the entire header */
       background-position: center; /* Center the image */
       background-repeat: no-repeat; /* Prevent the image from repeating */}
 
       .notice_contents{width: 1260px; height: 500px; margin: 0px auto; position: relative;}
+
+
+
 
       /*noti css*/
       .breadcrumb { clear:both; border-bottom:2px solid #777; 
@@ -42,28 +45,25 @@
       .tb1 th { background-color: #333; color:#fff; }
       .tb1 td { border-bottom:1px solid #333; }
       .tb1 td:first-child { text-align: center; color:deepskyblue; }
-      .tb1 td:last-child { text-align: right; padding-right: 20px; }
+      .tb1 td { text-align: center; padding-right: 20px; }
       .tb1 a { text-decoration: none; color:#333; }
       .tb1 a:hover { text-decoration: underline; color:deepskyblue; }
       .tb1 a.answer { padding-left: 28px; }
-      
-      #vs { clear:both; width: 1930px; height: 600px; overflow:hidden; position:relative; margin: 0 auto;}
-      #vs img { display:block; width: 100%;  height: 100%; position:absolute;  z-index: 0px;}
 
-
+      .btn-group{clear: both; float: right; margin-right: 1.0rem; margin-top: 1rem;} 
+        .notice_contents button{width: 70px; height: 40px; font: bolder; }
     </style>
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/header.jsp" %> 
-    <figure id="vs">
-        <img class="backimg" src="${path}/resources/img/back01.jpg" alt="배경이미지">
-    </figure>
-    <div class="notice_contents">
-      <section class="page" id="page1">
+   <%@ include file="/WEB-INF/views/header.jsp"%>
+   <header class="notice_header">
+
+    </header>
+   <div class="notice_contents">
         <div class="breadcrumb">
             <p>
-                <a href="">홈</a><a href="">커뮤니티</a><span>공지사항</span>
+                <a href="${path}">홈</a><a href="${path}/notice/noticeList.do">커뮤니티</a><span>공지사항</span>
             </p>
         </div>
         <hr>
@@ -72,38 +72,32 @@
             <table class="tb1">
                 <thead>
                     <tr>
-                      <th>Bno</th>
-                      <th>Title</th>
-                      <th>Author</th>
-                      <th>View Count</th>
-                      <th>Resdate</th>
-                      <th>Actions</th>
+                        <th>글번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>조회수</th>
+                        <th>작성일</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="notice" items="${noticeList}">
-            <tr>
-                <td>${notice.bno}</td>
-                <td><a href="${path}/notice/getNotice.do?bno=${notice.bno}">${notice.title}</a></td>
-                <td>${notice.author}</td>
-                <td>${notice.vcnt}</td>
-                <td>${notice.resdate}</td>
-                <td>
-                    <a href="${path}/notice/editNotice.do?bno=${notice.bno}">Edit</a>
-                    <a href="${path}/notice/deleteNotice.do?bno=${notice.bno}">Delete</a>
-                </td>
-            </tr>
-        </c:forEach>
-                  
+                        <tr>
+                            <td>${notice.bno}</td>
+                            <td><a href="${path}/notice/getNotice.do?bno=${notice.bno}">${notice.title}</a></td>
+                            <td>${notice.author}</td>
+                            <td>${notice.visited}</td>
+                            <td>${notice.resdate}</td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
-    <a href="${path}/notice/insertNotice.do">Insert Notice</a>
-            <div class="btn-group">
-                <a href="" class="">글 쓰기</a>
+                <div class="btn-group">
+                    <c:if test="${sid == 'admin'}">
+                    <button type="submit" href=""><a href="${path}/notice/insertNotice.do">글등록</a></button>
+                </c:if>
             </div>
         </div>
-    </section>
-    </div>
-   <%@ include file="/WEB-INF/views/footer.jsp" %> 
+   </div>
+   <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
